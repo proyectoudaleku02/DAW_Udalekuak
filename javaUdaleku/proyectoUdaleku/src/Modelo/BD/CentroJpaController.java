@@ -7,13 +7,13 @@ package Modelo.BD;
 
 import Modelo.BD.exceptions.NonexistentEntityException;
 import Modelo.BD.exceptions.PreexistingEntityException;
-import Modelo.UML.Centros;
+import Modelo.UML.Centro;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import Modelo.UML.Provincias;
+import Modelo.UML.Provincia;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -22,9 +22,9 @@ import javax.persistence.EntityManagerFactory;
  *
  * @author 1glm02
  */
-public class CentrosJpaController implements Serializable {
+public class CentroJpaController implements Serializable {
 
-    public CentrosJpaController(EntityManagerFactory emf) {
+    public CentroJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
@@ -33,25 +33,25 @@ public class CentrosJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Centros centros) throws PreexistingEntityException, Exception {
+    public void create(Centro centro) throws PreexistingEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Provincias idprovincia = centros.getIdprovincia();
+            Provincia idprovincia = centro.getIdprovincia();
             if (idprovincia != null) {
                 idprovincia = em.getReference(idprovincia.getClass(), idprovincia.getIdprovincia());
-                centros.setIdprovincia(idprovincia);
+                centro.setIdprovincia(idprovincia);
             }
-            em.persist(centros);
+            em.persist(centro);
             if (idprovincia != null) {
-                idprovincia.getCentrosCollection().add(centros);
+                idprovincia.getCentroCollection().add(centro);
                 idprovincia = em.merge(idprovincia);
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
-            if (findCentros(centros.getIdcentro()) != null) {
-                throw new PreexistingEntityException("Centros " + centros + " already exists.", ex);
+            if (findCentro(centro.getIdcentro()) != null) {
+                throw new PreexistingEntityException("Centro " + centro + " already exists.", ex);
             }
             throw ex;
         } finally {
@@ -61,34 +61,34 @@ public class CentrosJpaController implements Serializable {
         }
     }
 
-    public void edit(Centros centros) throws NonexistentEntityException, Exception {
+    public void edit(Centro centro) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Centros persistentCentros = em.find(Centros.class, centros.getIdcentro());
-            Provincias idprovinciaOld = persistentCentros.getIdprovincia();
-            Provincias idprovinciaNew = centros.getIdprovincia();
+            Centro persistentCentro = em.find(Centro.class, centro.getIdcentro());
+            Provincia idprovinciaOld = persistentCentro.getIdprovincia();
+            Provincia idprovinciaNew = centro.getIdprovincia();
             if (idprovinciaNew != null) {
                 idprovinciaNew = em.getReference(idprovinciaNew.getClass(), idprovinciaNew.getIdprovincia());
-                centros.setIdprovincia(idprovinciaNew);
+                centro.setIdprovincia(idprovinciaNew);
             }
-            centros = em.merge(centros);
+            centro = em.merge(centro);
             if (idprovinciaOld != null && !idprovinciaOld.equals(idprovinciaNew)) {
-                idprovinciaOld.getCentrosCollection().remove(centros);
+                idprovinciaOld.getCentroCollection().remove(centro);
                 idprovinciaOld = em.merge(idprovinciaOld);
             }
             if (idprovinciaNew != null && !idprovinciaNew.equals(idprovinciaOld)) {
-                idprovinciaNew.getCentrosCollection().add(centros);
+                idprovinciaNew.getCentroCollection().add(centro);
                 idprovinciaNew = em.merge(idprovinciaNew);
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Long id = centros.getIdcentro();
-                if (findCentros(id) == null) {
-                    throw new NonexistentEntityException("The centros with id " + id + " no longer exists.");
+                Long id = centro.getIdcentro();
+                if (findCentro(id) == null) {
+                    throw new NonexistentEntityException("The centro with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -104,19 +104,19 @@ public class CentrosJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Centros centros;
+            Centro centro;
             try {
-                centros = em.getReference(Centros.class, id);
-                centros.getIdcentro();
+                centro = em.getReference(Centro.class, id);
+                centro.getIdcentro();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The centros with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The centro with id " + id + " no longer exists.", enfe);
             }
-            Provincias idprovincia = centros.getIdprovincia();
+            Provincia idprovincia = centro.getIdprovincia();
             if (idprovincia != null) {
-                idprovincia.getCentrosCollection().remove(centros);
+                idprovincia.getCentroCollection().remove(centro);
                 idprovincia = em.merge(idprovincia);
             }
-            em.remove(centros);
+            em.remove(centro);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -125,19 +125,19 @@ public class CentrosJpaController implements Serializable {
         }
     }
 
-    public List<Centros> findCentrosEntities() {
-        return findCentrosEntities(true, -1, -1);
+    public List<Centro> findCentroEntities() {
+        return findCentroEntities(true, -1, -1);
     }
 
-    public List<Centros> findCentrosEntities(int maxResults, int firstResult) {
-        return findCentrosEntities(false, maxResults, firstResult);
+    public List<Centro> findCentroEntities(int maxResults, int firstResult) {
+        return findCentroEntities(false, maxResults, firstResult);
     }
 
-    private List<Centros> findCentrosEntities(boolean all, int maxResults, int firstResult) {
+    private List<Centro> findCentroEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Centros.class));
+            cq.select(cq.from(Centro.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -149,20 +149,20 @@ public class CentrosJpaController implements Serializable {
         }
     }
 
-    public Centros findCentros(Long id) {
+    public Centro findCentro(Long id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Centros.class, id);
+            return em.find(Centro.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getCentrosCount() {
+    public int getCentroCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Centros> rt = cq.from(Centros.class);
+            Root<Centro> rt = cq.from(Centro.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();

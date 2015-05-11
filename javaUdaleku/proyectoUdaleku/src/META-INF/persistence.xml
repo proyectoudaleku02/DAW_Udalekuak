@@ -7,6 +7,13 @@
     <class>Modelo.UML.Provincias</class>
     <class>Modelo.UML.Direcciones</class>
     <class>Modelo.UML.Vias</class>
+    <class>Modelo.UML.Localidades</class>
+    <class>Modelo.UML.Provincia</class>
+    <class>Modelo.UML.Direccion</class>
+    <class>Modelo.UML.Localidad</class>
+    <class>Modelo.UML.Via</class>
+    <class>Modelo.UML.Municipio</class>
+    <class>Modelo.UML.Centro</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@server224:1521:orcl"/>
       <property name="javax.persistence.jdbc.user" value="daw02"/>

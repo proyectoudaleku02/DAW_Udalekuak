@@ -25,11 +25,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "CENTROS")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Centros.findAll", query = "SELECT c FROM Centros c"),
-    @NamedQuery(name = "Centros.findByIdcentro", query = "SELECT c FROM Centros c WHERE c.idcentro = :idcentro"),
-    @NamedQuery(name = "Centros.findByNombrecent", query = "SELECT c FROM Centros c WHERE c.nombrecent = :nombrecent"),
-    @NamedQuery(name = "Centros.findByModelocent", query = "SELECT c FROM Centros c WHERE c.modelocent = :modelocent")})
-public class Centros implements Serializable {
+    @NamedQuery(name = "Centro.findAll", query = "SELECT c FROM Centro c"),
+    @NamedQuery(name = "Centro.findByIdcentro", query = "SELECT c FROM Centro c WHERE c.idcentro = :idcentro"),
+    @NamedQuery(name = "Centro.findByNombrecent", query = "SELECT c FROM Centro c WHERE c.nombrecent = :nombrecent"),
+    @NamedQuery(name = "Centro.findByModelocent", query = "SELECT c FROM Centro c WHERE c.modelocent = :modelocent")})
+public class Centro implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -43,16 +43,16 @@ public class Centros implements Serializable {
     private String modelocent;
     @JoinColumn(name = "IDPROVINCIA", referencedColumnName = "IDPROVINCIA")
     @ManyToOne
-    private Provincias idprovincia;
+    private Provincia idprovincia;
 
-    public Centros() {
+    public Centro() {
     }
 
-    public Centros(Long idcentro) {
+    public Centro(Long idcentro) {
         this.idcentro = idcentro;
     }
 
-    public Centros(Long idcentro, String nombrecent, String modelocent) {
+    public Centro(Long idcentro, String nombrecent, String modelocent) {
         this.idcentro = idcentro;
         this.nombrecent = nombrecent;
         this.modelocent = modelocent;
@@ -82,11 +82,11 @@ public class Centros implements Serializable {
         this.modelocent = modelocent;
     }
 
-    public Provincias getIdprovincia() {
+    public Provincia getIdprovincia() {
         return idprovincia;
     }
 
-    public void setIdprovincia(Provincias idprovincia) {
+    public void setIdprovincia(Provincia idprovincia) {
         this.idprovincia = idprovincia;
     }
 
@@ -100,10 +100,10 @@ public class Centros implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Centros)) {
+        if (!(object instanceof Centro)) {
             return false;
         }
-        Centros other = (Centros) object;
+        Centro other = (Centro) object;
         if ((this.idcentro == null && other.idcentro != null) || (this.idcentro != null && !this.idcentro.equals(other.idcentro))) {
             return false;
         }
@@ -112,7 +112,7 @@ public class Centros implements Serializable {
 
     @Override
     public String toString() {
-        return "Modelo.UML.Centros[ idcentro=" + idcentro + " ]";
+        return "Modelo.UML.Centro[ idcentro=" + idcentro + " ]";
     }
     
 }
