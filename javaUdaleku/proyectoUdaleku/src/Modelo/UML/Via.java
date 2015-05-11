@@ -28,11 +28,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "VIAS")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Vias.findAll", query = "SELECT v FROM Vias v"),
-    @NamedQuery(name = "Vias.findByIdvia", query = "SELECT v FROM Vias v WHERE v.idvia = :idvia"),
-    @NamedQuery(name = "Vias.findByTipovia", query = "SELECT v FROM Vias v WHERE v.tipovia = :tipovia"),
-    @NamedQuery(name = "Vias.findByNombrevia", query = "SELECT v FROM Vias v WHERE v.nombrevia = :nombrevia")})
-public class Vias implements Serializable {
+    @NamedQuery(name = "Via.findAll", query = "SELECT v FROM Via v"),
+    @NamedQuery(name = "Via.findByIdvia", query = "SELECT v FROM Via v WHERE v.idvia = :idvia"),
+    @NamedQuery(name = "Via.findByTipovia", query = "SELECT v FROM Via v WHERE v.tipovia = :tipovia"),
+    @NamedQuery(name = "Via.findByNombrevia", query = "SELECT v FROM Via v WHERE v.nombrevia = :nombrevia")})
+public class Via implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -45,19 +45,19 @@ public class Vias implements Serializable {
     @Column(name = "NOMBREVIA")
     private String nombrevia;
     @OneToMany(mappedBy = "idvia")
-    private Collection<Direcciones> direccionesCollection;
+    private Collection<Direccion> direccionCollection;
     @JoinColumn(name = "IDMUNICIPIO", referencedColumnName = "IDMUNICIPIO")
     @ManyToOne
-    private Municipios idmunicipio;
+    private Municipio idmunicipio;
 
-    public Vias() {
+    public Via() {
     }
 
-    public Vias(Long idvia) {
+    public Via(Long idvia) {
         this.idvia = idvia;
     }
 
-    public Vias(Long idvia, String tipovia, String nombrevia) {
+    public Via(Long idvia, String tipovia, String nombrevia) {
         this.idvia = idvia;
         this.tipovia = tipovia;
         this.nombrevia = nombrevia;
@@ -88,19 +88,19 @@ public class Vias implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Direcciones> getDireccionesCollection() {
-        return direccionesCollection;
+    public Collection<Direccion> getDireccionCollection() {
+        return direccionCollection;
     }
 
-    public void setDireccionesCollection(Collection<Direcciones> direccionesCollection) {
-        this.direccionesCollection = direccionesCollection;
+    public void setDireccionCollection(Collection<Direccion> direccionCollection) {
+        this.direccionCollection = direccionCollection;
     }
 
-    public Municipios getIdmunicipio() {
+    public Municipio getIdmunicipio() {
         return idmunicipio;
     }
 
-    public void setIdmunicipio(Municipios idmunicipio) {
+    public void setIdmunicipio(Municipio idmunicipio) {
         this.idmunicipio = idmunicipio;
     }
 
@@ -114,10 +114,10 @@ public class Vias implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Vias)) {
+        if (!(object instanceof Via)) {
             return false;
         }
-        Vias other = (Vias) object;
+        Via other = (Via) object;
         if ((this.idvia == null && other.idvia != null) || (this.idvia != null && !this.idvia.equals(other.idvia))) {
             return false;
         }
@@ -126,7 +126,7 @@ public class Vias implements Serializable {
 
     @Override
     public String toString() {
-        return "Modelo.UML.Vias[ idvia=" + idvia + " ]";
+        return "Modelo.UML.Via[ idvia=" + idvia + " ]";
     }
     
 }

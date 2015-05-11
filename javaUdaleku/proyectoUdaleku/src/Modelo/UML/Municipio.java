@@ -28,10 +28,10 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "MUNICIPIOS")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Municipios.findAll", query = "SELECT m FROM Municipios m"),
-    @NamedQuery(name = "Municipios.findByIdmunicipio", query = "SELECT m FROM Municipios m WHERE m.idmunicipio = :idmunicipio"),
-    @NamedQuery(name = "Municipios.findByNombremunic", query = "SELECT m FROM Municipios m WHERE m.nombremunic = :nombremunic")})
-public class Municipios implements Serializable {
+    @NamedQuery(name = "Municipio.findAll", query = "SELECT m FROM Municipio m"),
+    @NamedQuery(name = "Municipio.findByIdmunicipio", query = "SELECT m FROM Municipio m WHERE m.idmunicipio = :idmunicipio"),
+    @NamedQuery(name = "Municipio.findByNombremunic", query = "SELECT m FROM Municipio m WHERE m.nombremunic = :nombremunic")})
+public class Municipio implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -42,18 +42,20 @@ public class Municipios implements Serializable {
     private String nombremunic;
     @JoinColumn(name = "IDPROVINCIA", referencedColumnName = "IDPROVINCIA")
     @ManyToOne
-    private Provincias idprovincia;
+    private Provincia idprovincia;
     @OneToMany(mappedBy = "idmunicipio")
-    private Collection<Vias> viasCollection;
+    private Collection<Localidad> localidadCollection;
+    @OneToMany(mappedBy = "idmunicipio")
+    private Collection<Via> viaCollection;
 
-    public Municipios() {
+    public Municipio() {
     }
 
-    public Municipios(Long idmunicipio) {
+    public Municipio(Long idmunicipio) {
         this.idmunicipio = idmunicipio;
     }
 
-    public Municipios(Long idmunicipio, String nombremunic) {
+    public Municipio(Long idmunicipio, String nombremunic) {
         this.idmunicipio = idmunicipio;
         this.nombremunic = nombremunic;
     }
@@ -74,21 +76,30 @@ public class Municipios implements Serializable {
         this.nombremunic = nombremunic;
     }
 
-    public Provincias getIdprovincia() {
+    public Provincia getIdprovincia() {
         return idprovincia;
     }
 
-    public void setIdprovincia(Provincias idprovincia) {
+    public void setIdprovincia(Provincia idprovincia) {
         this.idprovincia = idprovincia;
     }
 
     @XmlTransient
-    public Collection<Vias> getViasCollection() {
-        return viasCollection;
+    public Collection<Localidad> getLocalidadCollection() {
+        return localidadCollection;
     }
 
-    public void setViasCollection(Collection<Vias> viasCollection) {
-        this.viasCollection = viasCollection;
+    public void setLocalidadCollection(Collection<Localidad> localidadCollection) {
+        this.localidadCollection = localidadCollection;
+    }
+
+    @XmlTransient
+    public Collection<Via> getViaCollection() {
+        return viaCollection;
+    }
+
+    public void setViaCollection(Collection<Via> viaCollection) {
+        this.viaCollection = viaCollection;
     }
 
     @Override
@@ -101,10 +112,10 @@ public class Municipios implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Municipios)) {
+        if (!(object instanceof Municipio)) {
             return false;
         }
-        Municipios other = (Municipios) object;
+        Municipio other = (Municipio) object;
         if ((this.idmunicipio == null && other.idmunicipio != null) || (this.idmunicipio != null && !this.idmunicipio.equals(other.idmunicipio))) {
             return false;
         }
@@ -113,7 +124,7 @@ public class Municipios implements Serializable {
 
     @Override
     public String toString() {
-        return "Modelo.UML.Municipios[ idmunicipio=" + idmunicipio + " ]";
+        return "Modelo.UML.Municipio[ idmunicipio=" + idmunicipio + " ]";
     }
     
 }

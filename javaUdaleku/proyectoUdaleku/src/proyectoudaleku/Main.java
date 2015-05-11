@@ -1,7 +1,9 @@
 
 package proyectoudaleku;
 
+import Modelo.UML.Via;
 import gui.*;
+import java.util.ArrayList;
 
 
 public class Main {
@@ -9,6 +11,9 @@ public class Main {
     private static Inicio inic;
     private static panInicio panInic;
     private static panInscripcion panInscrip;
+    
+    private static ArrayList<Via> vias;
+   
     
     public static void main(String[] args) {
         panInic = new panInicio();
