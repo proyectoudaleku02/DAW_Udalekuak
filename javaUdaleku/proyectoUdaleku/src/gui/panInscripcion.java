@@ -5,6 +5,7 @@
  */
 package gui;
 
+import Excepciones.CampoVacio;
 import Excepciones.ExGenerica;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -644,22 +645,16 @@ public class panInscripcion extends javax.swing.JPanel {
 
     private void bGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGuardarActionPerformed
         try{
-            // Datos tutor
-            if(Main.sendTutor(tfDniTutor.getText(),tfNombreTutor.getText(),tfApel1Tutor.getText(),tfApel2Tutor.getText())==false)
-                throw new ExGenerica("Ha sido imposible registrar la inscripción");
-            // Datos Menor
-            if(Main.sendMenor(tfDniMenor.getText(),tfNombreMenor.getText(),tfApel1Menor.getText(),tfApel2Menor.getText(),grupoSexo.getSelection().toString(),tfFehcaNacMenor.getText(),cbDiscapacidad.getSelectedItem().toString())==false)
-                throw new ExGenerica("Ha sido imposible registrar la inscripción");
-            // Datos Direccion
-            ArrayList<String> telefonos = makeArrayTfn();
-            if(Main.sendDireccion(cbMunicipio.getSelectedItem().toString(),cbLocalidad.getSelectedItem().toString(),tfCalle.getText(),tfCp.getText(),tfNumero.getText(),tfLetra.getText(),tfPiso.getText(),tfEscalera.getText(),tfMano.getText(),telefonos)==false)
-                throw new ExGenerica("Ha sido imposible registrar la inscripción");
-            if(Main.sendCentro(grupoProvincia.getSelection().toString(),tfProvinciaCentro.getText(),grupoModelo.getSelection().toString())==false)
-                throw new ExGenerica("Ha sido imposible registrar la inscripción");
+            verificarDatos();
+            sendDatos();
             
         }
+        catch(CampoVacio ex){}
         catch(ExGenerica ex){
             mostrar(ex.getMessage());
+        }
+        catch(Exception ex){
+            mostrar("Ha sido imposible registrar la inscripción");
         }
     }//GEN-LAST:event_bGuardarActionPerformed
 
@@ -749,5 +744,28 @@ public class panInscripcion extends javax.swing.JPanel {
         if(tfTfn4.getText().isEmpty()==false)
             telefonos.add(tfTfn4.getText());
         return telefonos;
+    }
+
+    private void sendDatos() throws Exception{
+        // Datos tutor
+        if(Main.sendTutor(tfDniTutor.getText(),tfNombreTutor.getText(),tfApel1Tutor.getText(),tfApel2Tutor.getText())==false)
+            throw new Exception();
+        // Datos Menor
+        if(Main.sendMenor(tfDniMenor.getText(),tfNombreMenor.getText(),tfApel1Menor.getText(),tfApel2Menor.getText(),grupoSexo.getSelection().toString(),tfFehcaNacMenor.getText(),cbDiscapacidad.getSelectedItem().toString())==false)
+            throw new Exception();
+        // Datos Direccion
+        ArrayList<String> telefonos = makeArrayTfn();
+        if(Main.sendDireccion(cbMunicipio.getSelectedItem().toString(),cbLocalidad.getSelectedItem().toString(),tfCalle.getText(),tfCp.getText(),tfNumero.getText(),tfLetra.getText(),tfPiso.getText(),tfEscalera.getText(),tfMano.getText(),telefonos)==false)
+            throw new Exception();
+        // Datos Centro
+        if(Main.sendCentro(grupoProvincia.getSelection().toString(),tfProvinciaCentro.getText(),grupoModelo.getSelection().toString())==false)
+            throw new Exception();
+            
+    }
+
+    private void verificarDatos() {
+        // Datos tutor
+        if(tfDniTutor.getText().isEmpty()||tfNombreTutor.getText().isEmpty()||tfApel1Tutor.getText().isEmpty()||tfApel2Tutor.getText().isEmpty())
+            thro
     }
 }
