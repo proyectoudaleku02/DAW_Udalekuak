@@ -12,6 +12,7 @@ public class Main {
     private static Inicio inic;
     private static panInicio panInic;
     private static panInscripcion panInscrip;
+    private static panLupa panLupa;
     private static String provincia;
 
     private static ArrayList<Via> vias;
@@ -75,6 +76,18 @@ public class Main {
     public static boolean sendCentro(String provCentro, String nomCentro, String modelo) {
 
         return true;
+    }
+
+    public static void buildLupa(String tipo,String prov) {
+        switch(tipo){
+            case "municipios":
+                panLupa=new panLupa(tipo, prov);
+                panLupa.setVisible(true);
+                break;
+            case "centros":
+                
+                break;
+    }
     }
 
 }

@@ -92,6 +92,7 @@ public class panInscripcion extends javax.swing.JPanel {
         tfTfn3 = new javax.swing.JFormattedTextField();
         tfTfn4 = new javax.swing.JFormattedTextField();
         jLabel28 = new javax.swing.JLabel();
+        lupaCalle = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         pOtrosDatos = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
@@ -104,6 +105,7 @@ public class panInscripcion extends javax.swing.JPanel {
         rbD = new javax.swing.JRadioButton();
         jLabel32 = new javax.swing.JLabel();
         cbDiscapacidad = new javax.swing.JComboBox();
+        lupaCentro = new javax.swing.JLabel();
         bBorrar = new javax.swing.JButton();
         bGuardar = new javax.swing.JButton();
         bCancelar = new javax.swing.JButton();
@@ -366,6 +368,13 @@ public class panInscripcion extends javax.swing.JPanel {
         jLabel28.setForeground(new java.awt.Color(102, 102, 102));
         jLabel28.setText("Indique el teléfono de loicalización durante la estancia en la colonia, marcando la casilla al lado del teléfono.");
 
+        lupaCalle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa.png"))); // NOI18N
+        lupaCalle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lupaCalleMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout pDireccionLayout = new javax.swing.GroupLayout(pDireccion);
         pDireccion.setLayout(pDireccionLayout);
         pDireccionLayout.setHorizontalGroup(
@@ -420,7 +429,9 @@ public class panInscripcion extends javax.swing.JPanel {
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pDireccionLayout.createSequentialGroup()
                                     .addComponent(jLabel19)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(tfCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(tfCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lupaCalle)))
                             .addGroup(pDireccionLayout.createSequentialGroup()
                                 .addComponent(jLabel26)
                                 .addGap(26, 26, 26)
@@ -455,7 +466,8 @@ public class panInscripcion extends javax.swing.JPanel {
                 .addGap(23, 23, 23)
                 .addGroup(pDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(tfCalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfCalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lupaCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(pDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pDireccionLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -513,6 +525,8 @@ public class panInscripcion extends javax.swing.JPanel {
 
         cbDiscapacidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No", "Si" }));
 
+        lupaCentro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa.png"))); // NOI18N
+
         javax.swing.GroupLayout pOtrosDatosLayout = new javax.swing.GroupLayout(pOtrosDatos);
         pOtrosDatos.setLayout(pOtrosDatosLayout);
         pOtrosDatosLayout.setHorizontalGroup(
@@ -537,8 +551,10 @@ public class panInscripcion extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(rbOtraProv)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tfProvinciaCentro, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(96, 96, 96))
+                                .addComponent(tfProvinciaCentro, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lupaCentro)))
+                        .addGap(69, 69, 69))
                     .addGroup(pOtrosDatosLayout.createSequentialGroup()
                         .addComponent(jLabel32)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -549,11 +565,13 @@ public class panInscripcion extends javax.swing.JPanel {
             pOtrosDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pOtrosDatosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pOtrosDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel29)
-                    .addComponent(rbProv)
-                    .addComponent(rbOtraProv)
-                    .addComponent(tfProvinciaCentro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pOtrosDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pOtrosDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel29)
+                        .addComponent(rbProv)
+                        .addComponent(rbOtraProv)
+                        .addComponent(tfProvinciaCentro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lupaCentro, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pOtrosDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel30)
@@ -637,7 +655,7 @@ public class panInscripcion extends javax.swing.JPanel {
                     .addComponent(bBorrar)
                     .addComponent(bGuardar)
                     .addComponent(bCancelar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(jLabel27)
                 .addGap(14, 14, 14))
         );
@@ -675,6 +693,10 @@ public class panInscripcion extends javax.swing.JPanel {
             mostrar("Ha sido imposible registrar la inscripción");
         }
     }//GEN-LAST:event_bGuardarActionPerformed
+
+    private void lupaCalleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lupaCalleMouseClicked
+        Main.buildLupa("municipios",rbProv.getText());
+    }//GEN-LAST:event_lupaCalleMouseClicked
 
     private void mostrar(String text){
         JOptionPane.showMessageDialog(null, text);
@@ -717,7 +739,7 @@ public class panInscripcion extends javax.swing.JPanel {
         if(tfDniMenor.getText().isEmpty()||tfNombreMenor.getText().isEmpty()||tfApel1Menor.getText().isEmpty()||tfApel2Menor.getText().isEmpty()||grupoSexo.getSelection()==null||tfFehcaNacMenor.getText().isEmpty())
             throw new CampoVacio();
         // Campos obligatorios de la dirección.
-        if(cbMunicipio.getSelectedIndex()==0||cbLocalidad.getSelectedIndex()==0||)
+        //if(cbMunicipio.getSelectedIndex()==0||cbLocalidad.getSelectedIndex()==0||tfCp.getText().isEmpty()||tfCalle)
         
         
         
@@ -807,6 +829,8 @@ public class panInscripcion extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lupaCalle;
+    private javax.swing.JLabel lupaCentro;
     private javax.swing.JPanel pDireccion;
     private javax.swing.JPanel pMenor;
     private javax.swing.JPanel pOtrosDatos;
