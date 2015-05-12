@@ -7,7 +7,16 @@ package gui;
 
 import Excepciones.CampoVacio;
 import Excepciones.ExGenerica;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import proyectoudaleku.Main;
 
@@ -649,10 +658,8 @@ public class panInscripcion extends javax.swing.JPanel {
             sendDatos();
             
         }
-        catch(CampoVacio ex){}
-        catch(ExGenerica ex){
-            mostrar(ex.getMessage());
-        }
+        catch(CampoVacio ex){mostrar(ex.getMensaje());}
+        catch(ExGenerica ex){mostrar(ex.getMessage());}
         catch(Exception ex){
             mostrar("Ha sido imposible registrar la inscripción");
         }
@@ -661,7 +668,91 @@ public class panInscripcion extends javax.swing.JPanel {
     private void mostrar(String text){
         JOptionPane.showMessageDialog(null, text);
     }
+    
+    private ArrayList makeArrayTfn() {
+        ArrayList<String> telefonos=new ArrayList();
+        telefonos.add(tfTfn1.getText());
+        if(tfTfn2.getText().isEmpty()==false)
+            telefonos.add(tfTfn2.getText());
+        if(tfTfn3.getText().isEmpty()==false)
+            telefonos.add(tfTfn3.getText());
+        if(tfTfn4.getText().isEmpty()==false)
+            telefonos.add(tfTfn4.getText());
+        return telefonos;
+    }
 
+    private void sendDatos() throws Exception{
+        // Datos tutor
+        if(Main.sendTutor(tfDniTutor.getText(),tfNombreTutor.getText(),tfApel1Tutor.getText(),tfApel2Tutor.getText())==false)
+            throw new Exception();
+        // Datos Menor
+        if(Main.sendMenor(tfDniMenor.getText(),tfNombreMenor.getText(),tfApel1Menor.getText(),tfApel2Menor.getText(),grupoSexo.getSelection().toString(),tfFehcaNacMenor.getText(),cbDiscapacidad.getSelectedItem().toString())==false)
+            throw new Exception();
+        // Datos Direccion
+        ArrayList<String> telefonos = makeArrayTfn();
+        if(Main.sendDireccion(cbMunicipio.getSelectedItem().toString(),cbLocalidad.getSelectedItem().toString(),tfCalle.getText(),tfCp.getText(),tfNumero.getText(),tfLetra.getText(),tfPiso.getText(),tfEscalera.getText(),tfMano.getText(),telefonos)==false)
+            throw new Exception();
+        // Datos Centro
+        if(Main.sendCentro(grupoProvincia.getSelection().toString(),tfProvinciaCentro.getText(),grupoModelo.getSelection().toString())==false)
+            throw new Exception();
+            
+    }
+
+    private void verificarDatos() throws Exception {
+//        // Campos obligatorios del tutor.
+//        if(tfDniTutor.getText().isEmpty()||tfNombreTutor.getText().isEmpty()||tfApel1Tutor.getText().isEmpty()||tfApel2Tutor.getText().isEmpty())
+//            throw new CampoVacio();
+//        // Campos obligatorios del menor.
+//        if(tfDniMenor.getText().isEmpty()||tfNombreMenor.getText().isEmpty()||tfApel1Menor.getText().isEmpty()||tfApel2Menor.getText().isEmpty()||grupoSexo.getSelection()==null||tfFehcaNacMenor.getText().isEmpty())
+//            throw new CampoVacio();
+//        // DNI del tutor
+//        if(verificarDni(tfDniTutor.getText())==false)
+//            throw new ExGenerica("El DNI del padre/madre o tutor/a no es correcto.");
+//        // DNI del menor.
+//        if(verificarDni(tfDniMenor.getText())==false)
+//            throw new ExGenerica("El DNI del menor no es correcto.");
+        // Fecha de nacimiento del menor. Tiene que tener entre 7 y 13 años.
+        if(verificarFechaNacMenor(tfFehcaNacMenor.getText())==false)
+            throw new ExGenerica("El menor debe tener entre 7 y 13 años. Revise el campo fecha de nacimiento.");
+    }
+    
+    private boolean verificarDni(String dni) {
+        // Patrón. Ya viene preparado del Formatted Field correspondiente.
+        // Letra del DNI.
+        String caracteres="TRWAGMYFPDXBNJZSQVHLCKE";
+        String dniNumeros=dni.substring(0,8);
+        int modulo=Integer.parseInt(dniNumeros) % 23;
+        char letra=caracteres.charAt(modulo);
+        char letraDni=dni.charAt(8);
+        if(letra!=letraDni)
+            return false;
+        // Dni válido
+        return true;
+    }
+        
+    private boolean verificarFechaNacMenor(String fechaString) throws Exception{
+        // Patrón. Ya viene preparado del Formatted Field correspondiente.
+        Calendar actual=Calendar.getInstance();
+        Calendar fechaNac=Calendar.getInstance();
+        Calendar x=new GregorianCalendar(); 
+        SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
+        fechaNac.setTime(sdf.parse(fechaString));
+        
+        // Si mayor de 13 años.
+        x.setTime(sdf.parse(fechaString));
+        x.add(Calendar.YEAR, 13);
+        if(x.before(actual))
+            return false;
+        
+        // Si menor de 7 años.
+        x.setTime(sdf.parse(fechaString));
+        x.add(Calendar.YEAR, 7);
+        if(x.after(actual))
+            return false;    
+                     
+        // Fecha dentro de los valores.
+        return true;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bBorrar;
     private javax.swing.JButton bCancelar;
@@ -734,38 +825,5 @@ public class panInscripcion extends javax.swing.JPanel {
     private javax.swing.JFormattedTextField tfTfn4;
     // End of variables declaration//GEN-END:variables
 
-    private ArrayList makeArrayTfn() {
-        ArrayList<String> telefonos=new ArrayList();
-        telefonos.add(tfTfn1.getText());
-        if(tfTfn2.getText().isEmpty()==false)
-            telefonos.add(tfTfn2.getText());
-        if(tfTfn3.getText().isEmpty()==false)
-            telefonos.add(tfTfn3.getText());
-        if(tfTfn4.getText().isEmpty()==false)
-            telefonos.add(tfTfn4.getText());
-        return telefonos;
-    }
 
-    private void sendDatos() throws Exception{
-        // Datos tutor
-        if(Main.sendTutor(tfDniTutor.getText(),tfNombreTutor.getText(),tfApel1Tutor.getText(),tfApel2Tutor.getText())==false)
-            throw new Exception();
-        // Datos Menor
-        if(Main.sendMenor(tfDniMenor.getText(),tfNombreMenor.getText(),tfApel1Menor.getText(),tfApel2Menor.getText(),grupoSexo.getSelection().toString(),tfFehcaNacMenor.getText(),cbDiscapacidad.getSelectedItem().toString())==false)
-            throw new Exception();
-        // Datos Direccion
-        ArrayList<String> telefonos = makeArrayTfn();
-        if(Main.sendDireccion(cbMunicipio.getSelectedItem().toString(),cbLocalidad.getSelectedItem().toString(),tfCalle.getText(),tfCp.getText(),tfNumero.getText(),tfLetra.getText(),tfPiso.getText(),tfEscalera.getText(),tfMano.getText(),telefonos)==false)
-            throw new Exception();
-        // Datos Centro
-        if(Main.sendCentro(grupoProvincia.getSelection().toString(),tfProvinciaCentro.getText(),grupoModelo.getSelection().toString())==false)
-            throw new Exception();
-            
-    }
-
-    private void verificarDatos() {
-        // Datos tutor
-        if(tfDniTutor.getText().isEmpty()||tfNombreTutor.getText().isEmpty()||tfApel1Tutor.getText().isEmpty()||tfApel2Tutor.getText().isEmpty())
-            thro
-    }
 }

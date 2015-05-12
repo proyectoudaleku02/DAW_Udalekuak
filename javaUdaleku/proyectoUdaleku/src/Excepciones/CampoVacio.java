@@ -8,10 +8,9 @@ package Excepciones;
 
 public class CampoVacio extends Exception{
     
-    private String message;
+    private final String mensaje = "Nigún campo obligatorio debe quedar vacío";
 
-    public CampoVacio() {
-        message = "Nigún campo obligatorio debe quedar vacío";
+    public String getMensaje() {
+        return mensaje;
     }
-    
 }
