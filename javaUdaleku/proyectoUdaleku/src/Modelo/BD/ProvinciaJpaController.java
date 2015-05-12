@@ -5,8 +5,8 @@
  */
 package Modelo.BD;
 
-import Modelo.BD.exceptions.NonexistentEntityException;
-import Modelo.BD.exceptions.PreexistingEntityException;
+import Excepciones.exceptions.NonexistentEntityException;
+import Excepciones.exceptions.PreexistingEntityException;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;

@@ -25,7 +25,9 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="295" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+              <Component id="bAraba" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel7" max="32767" attributes="0"/>
@@ -53,7 +55,13 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                      <Component id="bAraba" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
@@ -112,6 +120,14 @@
           <Image iconType="3" name="/imagenes/diputacion_araba.jpg"/>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="bAraba">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Araba"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bArabaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

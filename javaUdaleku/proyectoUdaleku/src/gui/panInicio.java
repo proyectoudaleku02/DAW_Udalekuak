@@ -5,6 +5,8 @@
  */
 package gui;
 
+import proyectoudaleku.Main;
+
 /**
  *
  * @author 1glm07
@@ -33,6 +35,7 @@ public class panInicio extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        bAraba = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 153, 153));
         setPreferredSize(new java.awt.Dimension(1300, 720));
@@ -49,12 +52,21 @@ public class panInicio extends javax.swing.JPanel {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diputacion_araba.jpg"))); // NOI18N
 
+        bAraba.setText("Araba");
+        bAraba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bArabaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(295, 295, 295)
+                .addGap(57, 57, 57)
+                .addComponent(bAraba)
+                .addGap(141, 141, 141)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -75,7 +87,11 @@ public class panInicio extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(bAraba)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
@@ -89,8 +105,13 @@ public class panInicio extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bArabaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bArabaActionPerformed
+        Main.findMunicipios("ARB");
+    }//GEN-LAST:event_bArabaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bAraba;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -25,15 +25,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "DIRECCIONES")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Direccion.findAll", query = "SELECT d FROM Direccion d"),
-    @NamedQuery(name = "Direccion.findByIddireccion", query = "SELECT d FROM Direccion d WHERE d.iddireccion = :iddireccion"),
-    @NamedQuery(name = "Direccion.findByNumdir", query = "SELECT d FROM Direccion d WHERE d.numdir = :numdir"),
-    @NamedQuery(name = "Direccion.findByLetra", query = "SELECT d FROM Direccion d WHERE d.letra = :letra"),
-    @NamedQuery(name = "Direccion.findByPiso", query = "SELECT d FROM Direccion d WHERE d.piso = :piso"),
-    @NamedQuery(name = "Direccion.findByEscalera", query = "SELECT d FROM Direccion d WHERE d.escalera = :escalera"),
-    @NamedQuery(name = "Direccion.findByMano", query = "SELECT d FROM Direccion d WHERE d.mano = :mano"),
-    @NamedQuery(name = "Direccion.findByCp", query = "SELECT d FROM Direccion d WHERE d.cp = :cp")})
-public class Direccion implements Serializable {
+    @NamedQuery(name = "Direccione.findAll", query = "SELECT d FROM Direccione d"),
+    @NamedQuery(name = "Direccione.findByIddireccion", query = "SELECT d FROM Direccione d WHERE d.iddireccion = :iddireccion"),
+    @NamedQuery(name = "Direccione.findByNumdir", query = "SELECT d FROM Direccione d WHERE d.numdir = :numdir"),
+    @NamedQuery(name = "Direccione.findByLetra", query = "SELECT d FROM Direccione d WHERE d.letra = :letra"),
+    @NamedQuery(name = "Direccione.findByPiso", query = "SELECT d FROM Direccione d WHERE d.piso = :piso"),
+    @NamedQuery(name = "Direccione.findByEscalera", query = "SELECT d FROM Direccione d WHERE d.escalera = :escalera"),
+    @NamedQuery(name = "Direccione.findByMano", query = "SELECT d FROM Direccione d WHERE d.mano = :mano"),
+    @NamedQuery(name = "Direccione.findByCp", query = "SELECT d FROM Direccione d WHERE d.cp = :cp")})
+public class Direccione implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -56,14 +56,14 @@ public class Direccion implements Serializable {
     @ManyToOne
     private Via idvia;
 
-    public Direccion() {
+    public Direccione() {
     }
 
-    public Direccion(String iddireccion) {
+    public Direccione(String iddireccion) {
         this.iddireccion = iddireccion;
     }
 
-    public Direccion(String iddireccion, String cp) {
+    public Direccione(String iddireccion, String cp) {
         this.iddireccion = iddireccion;
         this.cp = cp;
     }
@@ -142,10 +142,10 @@ public class Direccion implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Direccion)) {
+        if (!(object instanceof Direccione)) {
             return false;
         }
-        Direccion other = (Direccion) object;
+        Direccione other = (Direccione) object;
         if ((this.iddireccion == null && other.iddireccion != null) || (this.iddireccion != null && !this.iddireccion.equals(other.iddireccion))) {
             return false;
         }
@@ -154,7 +154,7 @@ public class Direccion implements Serializable {
 
     @Override
     public String toString() {
-        return "Modelo.UML.Direccion[ iddireccion=" + iddireccion + " ]";
+        return "Modelo.UML.Direccione[ iddireccion=" + iddireccion + " ]";
     }
     
 }

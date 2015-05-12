@@ -11,10 +11,10 @@ package Modelo.UML;
  */
 public abstract class Solicitante  {
     
-    private int idSolicitante;
-    private String nombre;
-    private String apel1;
-    private String apel2;
+    protected int idSolicitante;
+    protected String nombre;
+    protected String apel1;
+    protected String apel2;
 
     public int getIdSolicitante() {
         return idSolicitante;

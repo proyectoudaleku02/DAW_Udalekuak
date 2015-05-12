@@ -5,9 +5,9 @@
  */
 package Modelo.BD;
 
-import Modelo.BD.exceptions.NonexistentEntityException;
-import Modelo.BD.exceptions.PreexistingEntityException;
-import Modelo.UML.Direccion;
+import Excepciones.exceptions.NonexistentEntityException;
+import Excepciones.exceptions.PreexistingEntityException;
+import Modelo.UML.Direccione;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
@@ -22,9 +22,9 @@ import javax.persistence.EntityManagerFactory;
  *
  * @author 1glm02
  */
-public class DireccionJpaController implements Serializable {
+public class DireccioneJpaController implements Serializable {
 
-    public DireccionJpaController(EntityManagerFactory emf) {
+    public DireccioneJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
@@ -33,25 +33,25 @@ public class DireccionJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Direccion direccion) throws PreexistingEntityException, Exception {
+    public void create(Direccione direccione) throws PreexistingEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Via idvia = direccion.getIdvia();
+            Via idvia = direccione.getIdvia();
             if (idvia != null) {
                 idvia = em.getReference(idvia.getClass(), idvia.getIdvia());
-                direccion.setIdvia(idvia);
+                direccione.setIdvia(idvia);
             }
-            em.persist(direccion);
+            em.persist(direccione);
             if (idvia != null) {
-                idvia.getDireccionCollection().add(direccion);
+                idvia.getDireccioneCollection().add(direccione);
                 idvia = em.merge(idvia);
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
-            if (findDireccion(direccion.getIddireccion()) != null) {
-                throw new PreexistingEntityException("Direccion " + direccion + " already exists.", ex);
+            if (findDireccione(direccione.getIddireccion()) != null) {
+                throw new PreexistingEntityException("Direccione " + direccione + " already exists.", ex);
             }
             throw ex;
         } finally {
@@ -61,34 +61,34 @@ public class DireccionJpaController implements Serializable {
         }
     }
 
-    public void edit(Direccion direccion) throws NonexistentEntityException, Exception {
+    public void edit(Direccione direccione) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Direccion persistentDireccion = em.find(Direccion.class, direccion.getIddireccion());
-            Via idviaOld = persistentDireccion.getIdvia();
-            Via idviaNew = direccion.getIdvia();
+            Direccione persistentDireccione = em.find(Direccione.class, direccione.getIddireccion());
+            Via idviaOld = persistentDireccione.getIdvia();
+            Via idviaNew = direccione.getIdvia();
             if (idviaNew != null) {
                 idviaNew = em.getReference(idviaNew.getClass(), idviaNew.getIdvia());
-                direccion.setIdvia(idviaNew);
+                direccione.setIdvia(idviaNew);
             }
-            direccion = em.merge(direccion);
+            direccione = em.merge(direccione);
             if (idviaOld != null && !idviaOld.equals(idviaNew)) {
-                idviaOld.getDireccionCollection().remove(direccion);
+                idviaOld.getDireccioneCollection().remove(direccione);
                 idviaOld = em.merge(idviaOld);
             }
             if (idviaNew != null && !idviaNew.equals(idviaOld)) {
-                idviaNew.getDireccionCollection().add(direccion);
+                idviaNew.getDireccioneCollection().add(direccione);
                 idviaNew = em.merge(idviaNew);
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                String id = direccion.getIddireccion();
-                if (findDireccion(id) == null) {
-                    throw new NonexistentEntityException("The direccion with id " + id + " no longer exists.");
+                String id = direccione.getIddireccion();
+                if (findDireccione(id) == null) {
+                    throw new NonexistentEntityException("The direccione with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -104,19 +104,19 @@ public class DireccionJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Direccion direccion;
+            Direccione direccione;
             try {
-                direccion = em.getReference(Direccion.class, id);
-                direccion.getIddireccion();
+                direccione = em.getReference(Direccione.class, id);
+                direccione.getIddireccion();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The direccion with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The direccione with id " + id + " no longer exists.", enfe);
             }
-            Via idvia = direccion.getIdvia();
+            Via idvia = direccione.getIdvia();
             if (idvia != null) {
-                idvia.getDireccionCollection().remove(direccion);
+                idvia.getDireccioneCollection().remove(direccione);
                 idvia = em.merge(idvia);
             }
-            em.remove(direccion);
+            em.remove(direccione);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -125,19 +125,19 @@ public class DireccionJpaController implements Serializable {
         }
     }
 
-    public List<Direccion> findDireccionEntities() {
-        return findDireccionEntities(true, -1, -1);
+    public List<Direccione> findDireccioneEntities() {
+        return findDireccioneEntities(true, -1, -1);
     }
 
-    public List<Direccion> findDireccionEntities(int maxResults, int firstResult) {
-        return findDireccionEntities(false, maxResults, firstResult);
+    public List<Direccione> findDireccioneEntities(int maxResults, int firstResult) {
+        return findDireccioneEntities(false, maxResults, firstResult);
     }
 
-    private List<Direccion> findDireccionEntities(boolean all, int maxResults, int firstResult) {
+    private List<Direccione> findDireccioneEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Direccion.class));
+            cq.select(cq.from(Direccione.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -149,20 +149,20 @@ public class DireccionJpaController implements Serializable {
         }
     }
 
-    public Direccion findDireccion(String id) {
+    public Direccione findDireccione(String id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Direccion.class, id);
+            return em.find(Direccione.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getDireccionCount() {
+    public int getDireccioneCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Direccion> rt = cq.from(Direccion.class);
+            Root<Direccione> rt = cq.from(Direccione.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();

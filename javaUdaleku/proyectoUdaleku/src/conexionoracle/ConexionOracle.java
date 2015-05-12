@@ -11,9 +11,6 @@ import java.sql.Statement;
 
 public class ConexionOracle {
 
-    private static String url = "jdbc:oracle:thin:@server224:1521:orcl";
-    private static String usuario = "daw02";
-    private static String password = "daw02";
 
     private static Connection conn;
 
@@ -27,7 +24,7 @@ public class ConexionOracle {
         //obtener la conexion
         try {
             DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
-            conn = DriverManager.getConnection(url, usuario, password);
+            conn = DriverManager.getConnection("jdbc:oracle:thin:@server224:1521:orcl", "daw02", "daw02");
         } catch (SQLException e) {
             System.out.println();
         } catch (Exception e) {
