@@ -24,6 +24,7 @@ public class Main {
     private static Inicio inic;
     private static panInicio panInic;
     private static panInscripcion panInscrip;
+    private static panLupa panLupa;
 
     private static ConexionOracle conn;
     private static Connection conexion;
@@ -34,7 +35,11 @@ public class Main {
     private static ArrayList<Municipio> municipios;
     private static ArrayList<Localidad> localidades;
     private static ArrayList<Centro> centros;
+<<<<<<< HEAD
      private static ArrayList<CentroHasModelo> centroHasModelo;
+=======
+    private static String provincia;
+>>>>>>> origin/master
 
     public static void main(String[] args) {
         panInic = new panInicio();
@@ -51,6 +56,14 @@ public class Main {
 
     }
 
+    public static String getProvincia() {
+        return provincia;
+    }
+
+    public static void setProvincia(String provincia) {
+        Main.provincia = provincia;
+    }
+    
     public static void verPanInscrip() {
         panInscrip = new panInscripcion();
         inic.getContentPane().setVisible(false);
@@ -212,4 +225,15 @@ public class Main {
         return true;
     }
 
+    public static void buildLupa(String tipo,String prov) {
+        switch(tipo){
+            case "municipios":
+                panLupa=new panLupa(tipo, prov);
+                panLupa.setVisible(true);
+                break;
+            case "centros":
+                
+                break;
+    }
+    }
 }
