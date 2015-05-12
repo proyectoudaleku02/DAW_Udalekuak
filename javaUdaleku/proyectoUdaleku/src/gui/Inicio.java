@@ -32,21 +32,21 @@ public class Inicio extends javax.swing.JFrame {
 
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        mInicio = new javax.swing.JMenu();
+        mInscripciones = new javax.swing.JMenu();
         itemInscribirse = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
+        mConsultas = new javax.swing.JMenu();
+        mSalir = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1300, 720));
 
-        jMenu1.setText("Inicio");
-        jMenuBar1.add(jMenu1);
+        mInicio.setText("Inicio");
+        jMenuBar1.add(mInicio);
 
-        jMenu2.setText("Inscripciones");
+        mInscripciones.setText("Inscripciones");
 
         itemInscribirse.setText("Inscribirse");
         itemInscribirse.addActionListener(new java.awt.event.ActionListener() {
@@ -54,20 +54,20 @@ public class Inicio extends javax.swing.JFrame {
                 itemInscribirseActionPerformed(evt);
             }
         });
-        jMenu2.add(itemInscribirse);
+        mInscripciones.add(itemInscribirse);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(mInscripciones);
 
-        jMenu3.setText("Consultas");
-        jMenuBar1.add(jMenu3);
+        mConsultas.setText("Consultas");
+        jMenuBar1.add(mConsultas);
 
-        jMenu4.setText("Salir");
-        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
+        mSalir.setText("Salir");
+        mSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu4MouseClicked(evt);
+                mSalirMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(mSalir);
 
         setJMenuBar(jMenuBar1);
 
@@ -89,9 +89,9 @@ public class Inicio extends javax.swing.JFrame {
         Main.verPanInscrip();
     }//GEN-LAST:event_itemInscribirseActionPerformed
 
-    private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
+    private void mSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mSalirMouseClicked
         Main.salir();
-    }//GEN-LAST:event_jMenu4MouseClicked
+    }//GEN-LAST:event_mSalirMouseClicked
 
     /**
      * @param args the command line arguments
@@ -130,11 +130,11 @@ public class Inicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem itemInscribirse;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenu mConsultas;
+    private javax.swing.JMenu mInicio;
+    private javax.swing.JMenu mInscripciones;
+    private javax.swing.JMenu mSalir;
     // End of variables declaration//GEN-END:variables
 }

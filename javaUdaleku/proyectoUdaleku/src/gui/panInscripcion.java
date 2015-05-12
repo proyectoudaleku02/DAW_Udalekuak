@@ -5,25 +5,30 @@
  */
 package gui;
 
+import Excepciones.CampoVacio;
 import Excepciones.ExGenerica;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import proyectoudaleku.Main;
 
-/**
- *
- * @author 1glm07
- */
+
 public class panInscripcion extends javax.swing.JPanel {
 
-    /**
-     * Creates new form panInscripcion
-     */
+    
     public panInscripcion() {
         initComponents();
-
+        datosIniciales();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -87,10 +92,11 @@ public class panInscripcion extends javax.swing.JPanel {
         tfTfn3 = new javax.swing.JFormattedTextField();
         tfTfn4 = new javax.swing.JFormattedTextField();
         jLabel28 = new javax.swing.JLabel();
+        lupaCalle = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         pOtrosDatos = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
-        rbMismaProv = new javax.swing.JRadioButton();
+        rbProv = new javax.swing.JRadioButton();
         rbOtraProv = new javax.swing.JRadioButton();
         tfProvinciaCentro = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
@@ -99,6 +105,7 @@ public class panInscripcion extends javax.swing.JPanel {
         rbD = new javax.swing.JRadioButton();
         jLabel32 = new javax.swing.JLabel();
         cbDiscapacidad = new javax.swing.JComboBox();
+        lupaCentro = new javax.swing.JLabel();
         bBorrar = new javax.swing.JButton();
         bGuardar = new javax.swing.JButton();
         bCancelar = new javax.swing.JButton();
@@ -361,6 +368,13 @@ public class panInscripcion extends javax.swing.JPanel {
         jLabel28.setForeground(new java.awt.Color(102, 102, 102));
         jLabel28.setText("Indique el teléfono de loicalización durante la estancia en la colonia, marcando la casilla al lado del teléfono.");
 
+        lupaCalle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa.png"))); // NOI18N
+        lupaCalle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lupaCalleMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout pDireccionLayout = new javax.swing.GroupLayout(pDireccion);
         pDireccion.setLayout(pDireccionLayout);
         pDireccionLayout.setHorizontalGroup(
@@ -415,7 +429,9 @@ public class panInscripcion extends javax.swing.JPanel {
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pDireccionLayout.createSequentialGroup()
                                     .addComponent(jLabel19)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(tfCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(tfCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lupaCalle)))
                             .addGroup(pDireccionLayout.createSequentialGroup()
                                 .addComponent(jLabel26)
                                 .addGap(26, 26, 26)
@@ -450,7 +466,8 @@ public class panInscripcion extends javax.swing.JPanel {
                 .addGap(23, 23, 23)
                 .addGroup(pDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(tfCalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfCalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lupaCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(pDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pDireccionLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -487,8 +504,8 @@ public class panInscripcion extends javax.swing.JPanel {
 
         jLabel29.setText("* Centro de enseñanza");
 
-        grupoProvincia.add(rbMismaProv);
-        rbMismaProv.setText("Alava");
+        grupoProvincia.add(rbProv);
+        rbProv.setText("Alava");
 
         grupoProvincia.add(rbOtraProv);
         rbOtraProv.setText("Otra");
@@ -507,6 +524,8 @@ public class panInscripcion extends javax.swing.JPanel {
         jLabel32.setText("* Discapacidad");
 
         cbDiscapacidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No", "Si" }));
+
+        lupaCentro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa.png"))); // NOI18N
 
         javax.swing.GroupLayout pOtrosDatosLayout = new javax.swing.GroupLayout(pOtrosDatos);
         pOtrosDatos.setLayout(pOtrosDatosLayout);
@@ -528,12 +547,14 @@ public class panInscripcion extends javax.swing.JPanel {
                         .addGroup(pOtrosDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(rbD)
                             .addGroup(pOtrosDatosLayout.createSequentialGroup()
-                                .addComponent(rbMismaProv)
+                                .addComponent(rbProv)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(rbOtraProv)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tfProvinciaCentro, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(96, 96, 96))
+                                .addComponent(tfProvinciaCentro, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lupaCentro)))
+                        .addGap(69, 69, 69))
                     .addGroup(pOtrosDatosLayout.createSequentialGroup()
                         .addComponent(jLabel32)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -544,11 +565,13 @@ public class panInscripcion extends javax.swing.JPanel {
             pOtrosDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pOtrosDatosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pOtrosDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel29)
-                    .addComponent(rbMismaProv)
-                    .addComponent(rbOtraProv)
-                    .addComponent(tfProvinciaCentro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pOtrosDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pOtrosDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel29)
+                        .addComponent(rbProv)
+                        .addComponent(rbOtraProv)
+                        .addComponent(tfProvinciaCentro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lupaCentro, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pOtrosDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel30)
@@ -632,41 +655,142 @@ public class panInscripcion extends javax.swing.JPanel {
                     .addComponent(bBorrar)
                     .addComponent(bGuardar)
                     .addComponent(bCancelar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(jLabel27)
                 .addGap(14, 14, 14))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void datosIniciales() {
+        // Provincia
+        String prov=Main.getProvincia();
+        switch (prov){
+            case "ARB":
+                rbProv.setText("Araba");
+                break;
+            case "BZK":
+                rbProv.setText("Bizkaia");
+                break;
+            case "GZK":
+                rbProv.setText("Gipuzkoa");
+                break;
+        }
+    }
+    
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
         Main.cancelarPanel();
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void bGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGuardarActionPerformed
         try{
-            // Datos tutor
-            if(Main.sendTutor(tfDniTutor.getText(),tfNombreTutor.getText(),tfApel1Tutor.getText(),tfApel2Tutor.getText())==false)
-                throw new ExGenerica("Ha sido imposible registrar la inscripción");
-            // Datos Menor
-            if(Main.sendMenor(tfDniMenor.getText(),tfNombreMenor.getText(),tfApel1Menor.getText(),tfApel2Menor.getText(),grupoSexo.getSelection().toString(),tfFehcaNacMenor.getText(),cbDiscapacidad.getSelectedItem().toString())==false)
-                throw new ExGenerica("Ha sido imposible registrar la inscripción");
-            // Datos Direccion
-            ArrayList<String> telefonos = makeArrayTfn();
-            if(Main.sendDireccion(cbMunicipio.getSelectedItem().toString(),cbLocalidad.getSelectedItem().toString(),tfCalle.getText(),tfCp.getText(),tfNumero.getText(),tfLetra.getText(),tfPiso.getText(),tfEscalera.getText(),tfMano.getText(),telefonos)==false)
-                throw new ExGenerica("Ha sido imposible registrar la inscripción");
-            if(Main.sendCentro(grupoProvincia.getSelection().toString(),tfProvinciaCentro.getText(),grupoModelo.getSelection().toString())==false)
-                throw new ExGenerica("Ha sido imposible registrar la inscripción");
+            verificarDatos();
+            sendDatos();
             
         }
-        catch(ExGenerica ex){
-            mostrar(ex.getMessage());
+        catch(CampoVacio ex){mostrar(ex.getMensaje());}
+        catch(ExGenerica ex){mostrar(ex.getMessage());}
+        catch(Exception ex){
+            mostrar("Ha sido imposible registrar la inscripción");
         }
     }//GEN-LAST:event_bGuardarActionPerformed
+
+    private void lupaCalleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lupaCalleMouseClicked
+        Main.buildLupa("municipios",rbProv.getText());
+    }//GEN-LAST:event_lupaCalleMouseClicked
 
     private void mostrar(String text){
         JOptionPane.showMessageDialog(null, text);
     }
+    
+    private ArrayList makeArrayTfn() {
+        ArrayList<String> telefonos=new ArrayList();
+        telefonos.add(tfTfn1.getText());
+        if(tfTfn2.getText().isEmpty()==false)
+            telefonos.add(tfTfn2.getText());
+        if(tfTfn3.getText().isEmpty()==false)
+            telefonos.add(tfTfn3.getText());
+        if(tfTfn4.getText().isEmpty()==false)
+            telefonos.add(tfTfn4.getText());
+        return telefonos;
+    }
 
+    private void sendDatos() throws Exception{
+        // Datos tutor
+        if(Main.sendTutor(tfDniTutor.getText(),tfNombreTutor.getText(),tfApel1Tutor.getText(),tfApel2Tutor.getText())==false)
+            throw new Exception();
+        // Datos Menor
+        if(Main.sendMenor(tfDniMenor.getText(),tfNombreMenor.getText(),tfApel1Menor.getText(),tfApel2Menor.getText(),grupoSexo.getSelection().toString(),tfFehcaNacMenor.getText(),cbDiscapacidad.getSelectedItem().toString())==false)
+            throw new Exception();
+        // Datos Direccion
+        ArrayList<String> telefonos = makeArrayTfn();
+        if(Main.sendDireccion(cbMunicipio.getSelectedItem().toString(),cbLocalidad.getSelectedItem().toString(),tfCalle.getText(),tfCp.getText(),tfNumero.getText(),tfLetra.getText(),tfPiso.getText(),tfEscalera.getText(),tfMano.getText(),telefonos)==false)
+            throw new Exception();
+        // Datos Centro
+        if(Main.sendCentro(grupoProvincia.getSelection().toString(),tfProvinciaCentro.getText(),grupoModelo.getSelection().toString())==false)
+            throw new Exception();
+            
+    }
+
+    private void verificarDatos() throws Exception {
+        // Campos obligatorios del tutor.
+        if(tfDniTutor.getText().isEmpty()||tfNombreTutor.getText().isEmpty()||tfApel1Tutor.getText().isEmpty()||tfApel2Tutor.getText().isEmpty())
+            throw new CampoVacio();
+        // Campos obligatorios del menor.
+        if(tfDniMenor.getText().isEmpty()||tfNombreMenor.getText().isEmpty()||tfApel1Menor.getText().isEmpty()||tfApel2Menor.getText().isEmpty()||grupoSexo.getSelection()==null||tfFehcaNacMenor.getText().isEmpty())
+            throw new CampoVacio();
+        // Campos obligatorios de la dirección.
+        //if(cbMunicipio.getSelectedIndex()==0||cbLocalidad.getSelectedIndex()==0||tfCp.getText().isEmpty()||tfCalle)
+        
+        
+        
+        // DNI del tutor
+        if(verificarDni(tfDniTutor.getText())==false)
+            throw new ExGenerica("El DNI del padre/madre o tutor/a no es correcto.");
+        // DNI del menor.
+        if(verificarDni(tfDniMenor.getText())==false)
+            throw new ExGenerica("El DNI del menor no es correcto.");
+        // Fecha de nacimiento del menor. Tiene que tener entre 7 y 13 años.
+        if(verificarFechaNacMenor(tfFehcaNacMenor.getText())==false)
+            throw new ExGenerica("El menor debe tener entre 7 y 13 años. Revise el campo fecha de nacimiento.");
+    }
+    
+    private boolean verificarDni(String dni) {
+        // Patrón. Ya viene preparado del Formatted Field correspondiente.
+        // Letra del DNI.
+        String caracteres="TRWAGMYFPDXBNJZSQVHLCKE";
+        String dniNumeros=dni.substring(0,8);
+        int modulo=Integer.parseInt(dniNumeros) % 23;
+        char letra=caracteres.charAt(modulo);
+        char letraDni=dni.charAt(8);
+        if(letra!=letraDni)
+            return false;
+        // Dni válido
+        return true;
+    }
+        
+    private boolean verificarFechaNacMenor(String fechaString) throws Exception{
+        // Patrón. Ya viene preparado del Formatted Field correspondiente.
+        Calendar actual=Calendar.getInstance();
+        Calendar fechaNac=Calendar.getInstance();
+        Calendar x=new GregorianCalendar(); 
+        SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
+        fechaNac.setTime(sdf.parse(fechaString));
+        
+        // Si mayor de 13 años.
+        x.setTime(sdf.parse(fechaString));
+        x.add(Calendar.YEAR, 13);
+        if(x.before(actual))
+            return false;
+        
+        // Si menor de 7 años.
+        x.setTime(sdf.parse(fechaString));
+        x.add(Calendar.YEAR, 7);
+        if(x.after(actual))
+            return false;    
+                     
+        // Fecha dentro de los valores.
+        return true;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bBorrar;
     private javax.swing.JButton bCancelar;
@@ -705,6 +829,8 @@ public class panInscripcion extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lupaCalle;
+    private javax.swing.JLabel lupaCentro;
     private javax.swing.JPanel pDireccion;
     private javax.swing.JPanel pMenor;
     private javax.swing.JPanel pOtrosDatos;
@@ -713,9 +839,9 @@ public class panInscripcion extends javax.swing.JPanel {
     private javax.swing.JRadioButton rbB;
     private javax.swing.JRadioButton rbD;
     private javax.swing.JRadioButton rbMasculino;
-    private javax.swing.JRadioButton rbMismaProv;
     private javax.swing.JRadioButton rbMujer;
     private javax.swing.JRadioButton rbOtraProv;
+    private javax.swing.JRadioButton rbProv;
     private javax.swing.JTextField tfApel1Menor;
     private javax.swing.JTextField tfApel1Tutor;
     private javax.swing.JTextField tfApel2Menor;
@@ -739,15 +865,4 @@ public class panInscripcion extends javax.swing.JPanel {
     private javax.swing.JFormattedTextField tfTfn4;
     // End of variables declaration//GEN-END:variables
 
-    private ArrayList makeArrayTfn() {
-        ArrayList<String> telefonos=new ArrayList();
-        telefonos.add(tfTfn1.getText());
-        if(tfTfn2.getText().isEmpty()==false)
-            telefonos.add(tfTfn2.getText());
-        if(tfTfn3.getText().isEmpty()==false)
-            telefonos.add(tfTfn3.getText());
-        if(tfTfn4.getText().isEmpty()==false)
-            telefonos.add(tfTfn4.getText());
-        return telefonos;
-    }
 }
