@@ -35,11 +35,11 @@ public class Main {
     private static ArrayList<Municipio> municipios;
     private static ArrayList<Localidad> localidades;
     private static ArrayList<Centro> centros;
-<<<<<<< HEAD
+
      private static ArrayList<CentroHasModelo> centroHasModelo;
-=======
+
     private static String provincia;
->>>>>>> origin/master
+
 
     public static void main(String[] args) {
         panInic = new panInicio();
