@@ -20,20 +20,15 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import proyectoudaleku.Main;
 
-/**
- *
- * @author 1glm07
- */
+
 public class panInscripcion extends javax.swing.JPanel {
 
-    /**
-     * Creates new form panInscripcion
-     */
+    
     public panInscripcion() {
         initComponents();
-
+        datosIniciales();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -100,7 +95,7 @@ public class panInscripcion extends javax.swing.JPanel {
         jLabel27 = new javax.swing.JLabel();
         pOtrosDatos = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
-        rbMismaProv = new javax.swing.JRadioButton();
+        rbProv = new javax.swing.JRadioButton();
         rbOtraProv = new javax.swing.JRadioButton();
         tfProvinciaCentro = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
@@ -497,8 +492,8 @@ public class panInscripcion extends javax.swing.JPanel {
 
         jLabel29.setText("* Centro de enseñanza");
 
-        grupoProvincia.add(rbMismaProv);
-        rbMismaProv.setText("Alava");
+        grupoProvincia.add(rbProv);
+        rbProv.setText("Alava");
 
         grupoProvincia.add(rbOtraProv);
         rbOtraProv.setText("Otra");
@@ -538,7 +533,7 @@ public class panInscripcion extends javax.swing.JPanel {
                         .addGroup(pOtrosDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(rbD)
                             .addGroup(pOtrosDatosLayout.createSequentialGroup()
-                                .addComponent(rbMismaProv)
+                                .addComponent(rbProv)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(rbOtraProv)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -556,7 +551,7 @@ public class panInscripcion extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(pOtrosDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel29)
-                    .addComponent(rbMismaProv)
+                    .addComponent(rbProv)
                     .addComponent(rbOtraProv)
                     .addComponent(tfProvinciaCentro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -648,6 +643,22 @@ public class panInscripcion extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void datosIniciales() {
+        // Provincia
+        String prov=Main.getProvincia();
+        switch (prov){
+            case "ARB":
+                rbProv.setText("Araba");
+                break;
+            case "BZK":
+                rbProv.setText("Bizkaia");
+                break;
+            case "GZK":
+                rbProv.setText("Gipuzkoa");
+                break;
+        }
+    }
+    
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
         Main.cancelarPanel();
     }//GEN-LAST:event_bCancelarActionPerformed
@@ -699,18 +710,23 @@ public class panInscripcion extends javax.swing.JPanel {
     }
 
     private void verificarDatos() throws Exception {
-//        // Campos obligatorios del tutor.
-//        if(tfDniTutor.getText().isEmpty()||tfNombreTutor.getText().isEmpty()||tfApel1Tutor.getText().isEmpty()||tfApel2Tutor.getText().isEmpty())
-//            throw new CampoVacio();
-//        // Campos obligatorios del menor.
-//        if(tfDniMenor.getText().isEmpty()||tfNombreMenor.getText().isEmpty()||tfApel1Menor.getText().isEmpty()||tfApel2Menor.getText().isEmpty()||grupoSexo.getSelection()==null||tfFehcaNacMenor.getText().isEmpty())
-//            throw new CampoVacio();
-//        // DNI del tutor
-//        if(verificarDni(tfDniTutor.getText())==false)
-//            throw new ExGenerica("El DNI del padre/madre o tutor/a no es correcto.");
-//        // DNI del menor.
-//        if(verificarDni(tfDniMenor.getText())==false)
-//            throw new ExGenerica("El DNI del menor no es correcto.");
+        // Campos obligatorios del tutor.
+        if(tfDniTutor.getText().isEmpty()||tfNombreTutor.getText().isEmpty()||tfApel1Tutor.getText().isEmpty()||tfApel2Tutor.getText().isEmpty())
+            throw new CampoVacio();
+        // Campos obligatorios del menor.
+        if(tfDniMenor.getText().isEmpty()||tfNombreMenor.getText().isEmpty()||tfApel1Menor.getText().isEmpty()||tfApel2Menor.getText().isEmpty()||grupoSexo.getSelection()==null||tfFehcaNacMenor.getText().isEmpty())
+            throw new CampoVacio();
+        // Campos obligatorios de la dirección.
+        if(cbMunicipio.getSelectedIndex()==0||cbLocalidad.getSelectedIndex()==0||)
+        
+        
+        
+        // DNI del tutor
+        if(verificarDni(tfDniTutor.getText())==false)
+            throw new ExGenerica("El DNI del padre/madre o tutor/a no es correcto.");
+        // DNI del menor.
+        if(verificarDni(tfDniMenor.getText())==false)
+            throw new ExGenerica("El DNI del menor no es correcto.");
         // Fecha de nacimiento del menor. Tiene que tener entre 7 y 13 años.
         if(verificarFechaNacMenor(tfFehcaNacMenor.getText())==false)
             throw new ExGenerica("El menor debe tener entre 7 y 13 años. Revise el campo fecha de nacimiento.");
@@ -799,9 +815,9 @@ public class panInscripcion extends javax.swing.JPanel {
     private javax.swing.JRadioButton rbB;
     private javax.swing.JRadioButton rbD;
     private javax.swing.JRadioButton rbMasculino;
-    private javax.swing.JRadioButton rbMismaProv;
     private javax.swing.JRadioButton rbMujer;
     private javax.swing.JRadioButton rbOtraProv;
+    private javax.swing.JRadioButton rbProv;
     private javax.swing.JTextField tfApel1Menor;
     private javax.swing.JTextField tfApel1Tutor;
     private javax.swing.JTextField tfApel2Menor;
@@ -824,6 +840,5 @@ public class panInscripcion extends javax.swing.JPanel {
     private javax.swing.JFormattedTextField tfTfn3;
     private javax.swing.JFormattedTextField tfTfn4;
     // End of variables declaration//GEN-END:variables
-
 
 }

@@ -5,6 +5,10 @@
  */
 package gui;
 
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import proyectoudaleku.Main;
+
 /**
  *
  * @author 1glm07
@@ -16,6 +20,8 @@ public class panInicio extends javax.swing.JPanel {
      */
     public panInicio() {
         initComponents();
+        lAraba.setVisible(false);lBizkaia.setVisible(false);lGipuzkoa.setVisible(false);
+        JOptionPane.showMessageDialog(null, "Elige desde qué provincia quieres hacer los trámites");
     }
 
     /**
@@ -30,9 +36,12 @@ public class panInicio extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        bBizkaia = new javax.swing.JButton();
+        bAraba = new javax.swing.JButton();
+        bGipuzkoa = new javax.swing.JButton();
+        lAraba = new javax.swing.JLabel();
+        lGipuzkoa = new javax.swing.JLabel();
+        lBizkaia = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 153, 153));
         setPreferredSize(new java.awt.Dimension(1300, 720));
@@ -43,59 +52,110 @@ public class panInicio extends javax.swing.JPanel {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/chavales2.jpg"))); // NOI18N
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diputacion_bizkaia.png"))); // NOI18N
+        bBizkaia.setText("BIZKAIA");
+        bBizkaia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBizkaiaActionPerformed(evt);
+            }
+        });
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diputacion_gipuzkoa.jpg"))); // NOI18N
+        bAraba.setText("ARABA");
+        bAraba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bArabaActionPerformed(evt);
+            }
+        });
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diputacion_araba.jpg"))); // NOI18N
+        bGipuzkoa.setText("GIPUZKOA");
+        bGipuzkoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bGipuzkoaActionPerformed(evt);
+            }
+        });
+
+        lAraba.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diputacion_araba.jpg"))); // NOI18N
+
+        lGipuzkoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diputacion_gipuzkoa.jpg"))); // NOI18N
+
+        lBizkaia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diputacion_bizkaia.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(295, 295, 295)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6)
-                        .addGap(283, 283, 283))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(295, 295, 295)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel2)
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(bBizkaia, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bAraba, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bGipuzkoa, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel3)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jLabel3))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(550, 550, 550)
+                        .addComponent(lAraba)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lGipuzkoa)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lBizkaia, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(bAraba, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(bBizkaia, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(bGipuzkoa, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lAraba, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lGipuzkoa, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lBizkaia, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bArabaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bArabaActionPerformed
+        lAraba.setVisible(true);lBizkaia.setVisible(false); lGipuzkoa.setVisible(false);
+        Main.setProvincia("ARB");
+    }//GEN-LAST:event_bArabaActionPerformed
+
+    private void bBizkaiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBizkaiaActionPerformed
+        lBizkaia.setVisible(true);lAraba.setVisible(false); lGipuzkoa.setVisible(false);
+        Main.setProvincia("BZK");
+    }//GEN-LAST:event_bBizkaiaActionPerformed
+
+    private void bGipuzkoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGipuzkoaActionPerformed
+        lGipuzkoa.setVisible(true);lBizkaia.setVisible(false); lAraba.setVisible(false);
+        Main.setProvincia("GZK");
+    }//GEN-LAST:event_bGipuzkoaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bAraba;
+    private javax.swing.JButton bBizkaia;
+    private javax.swing.JButton bGipuzkoa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel lAraba;
+    private javax.swing.JLabel lBizkaia;
+    private javax.swing.JLabel lGipuzkoa;
     // End of variables declaration//GEN-END:variables
 }

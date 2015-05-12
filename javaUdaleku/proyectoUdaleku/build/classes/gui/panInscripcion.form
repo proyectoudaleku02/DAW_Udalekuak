@@ -739,7 +739,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="rbD" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="rbMismaProv" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rbProv" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="rbOtraProv" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -764,7 +764,7 @@
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel29" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="rbMismaProv" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rbProv" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="rbOtraProv" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="tfProvinciaCentro" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -791,7 +791,7 @@
             <Property name="text" type="java.lang.String" value="* Centro de ense&#xf1;anza"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="rbMismaProv">
+        <Component class="javax.swing.JRadioButton" name="rbProv">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="grupoProvincia"/>

@@ -12,6 +12,7 @@ public class Main {
     private static Inicio inic;
     private static panInicio panInic;
     private static panInscripcion panInscrip;
+    private static String provincia;
 
     private static ArrayList<Via> vias;
 
@@ -22,6 +23,14 @@ public class Main {
         panInic.setVisible(true);
         inic.setVisible(true);
 
+    }
+
+    public static String getProvincia() {
+        return provincia;
+    }
+
+    public static void setProvincia(String provincia) {
+        Main.provincia = provincia;
     }
 
     public static void verPanInscrip() {
