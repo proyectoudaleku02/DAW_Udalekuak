@@ -27,8 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Centro.findAll", query = "SELECT c FROM Centro c"),
     @NamedQuery(name = "Centro.findByIdcentro", query = "SELECT c FROM Centro c WHERE c.idcentro = :idcentro"),
-    @NamedQuery(name = "Centro.findByNombrecent", query = "SELECT c FROM Centro c WHERE c.nombrecent = :nombrecent"),
-    @NamedQuery(name = "Centro.findByModelocent", query = "SELECT c FROM Centro c WHERE c.modelocent = :modelocent")})
+    @NamedQuery(name = "Centro.findByNombrecent", query = "SELECT c FROM Centro c WHERE c.nombrecent = :nombrecent")})
 public class Centro implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -38,9 +37,6 @@ public class Centro implements Serializable {
     @Basic(optional = false)
     @Column(name = "NOMBRECENT")
     private String nombrecent;
-    @Basic(optional = false)
-    @Column(name = "MODELOCENT")
-    private String modelocent;
     @JoinColumn(name = "IDPROVINCIA", referencedColumnName = "IDPROVINCIA")
     @ManyToOne
     private Provincia idprovincia;
@@ -52,10 +48,9 @@ public class Centro implements Serializable {
         this.idcentro = idcentro;
     }
 
-    public Centro(Long idcentro, String nombrecent, String modelocent) {
+    public Centro(Long idcentro, String nombrecent) {
         this.idcentro = idcentro;
         this.nombrecent = nombrecent;
-        this.modelocent = modelocent;
     }
 
     public Long getIdcentro() {
@@ -72,14 +67,6 @@ public class Centro implements Serializable {
 
     public void setNombrecent(String nombrecent) {
         this.nombrecent = nombrecent;
-    }
-
-    public String getModelocent() {
-        return modelocent;
-    }
-
-    public void setModelocent(String modelocent) {
-        this.modelocent = modelocent;
     }
 
     public Provincia getIdprovincia() {

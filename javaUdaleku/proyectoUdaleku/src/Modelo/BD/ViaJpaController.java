@@ -5,15 +5,15 @@
  */
 package Modelo.BD;
 
-import Modelo.BD.exceptions.NonexistentEntityException;
-import Modelo.BD.exceptions.PreexistingEntityException;
+import Excepciones.exceptions.NonexistentEntityException;
+import Excepciones.exceptions.PreexistingEntityException;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import Modelo.UML.Municipio;
-import Modelo.UML.Direccion;
+import Modelo.UML.Direccione;
 import Modelo.UML.Via;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -37,8 +37,8 @@ public class ViaJpaController implements Serializable {
     }
 
     public void create(Via via) throws PreexistingEntityException, Exception {
-        if (via.getDireccionCollection() == null) {
-            via.setDireccionCollection(new ArrayList<Direccion>());
+        if (via.getDireccioneCollection() == null) {
+            via.setDireccioneCollection(new ArrayList<Direccione>());
         }
         EntityManager em = null;
         try {
@@ -49,24 +49,24 @@ public class ViaJpaController implements Serializable {
                 idmunicipio = em.getReference(idmunicipio.getClass(), idmunicipio.getIdmunicipio());
                 via.setIdmunicipio(idmunicipio);
             }
-            Collection<Direccion> attachedDireccionCollection = new ArrayList<Direccion>();
-            for (Direccion direccionCollectionDireccionToAttach : via.getDireccionCollection()) {
-                direccionCollectionDireccionToAttach = em.getReference(direccionCollectionDireccionToAttach.getClass(), direccionCollectionDireccionToAttach.getIddireccion());
-                attachedDireccionCollection.add(direccionCollectionDireccionToAttach);
+            Collection<Direccione> attachedDireccioneCollection = new ArrayList<Direccione>();
+            for (Direccione direccioneCollectionDireccioneToAttach : via.getDireccioneCollection()) {
+                direccioneCollectionDireccioneToAttach = em.getReference(direccioneCollectionDireccioneToAttach.getClass(), direccioneCollectionDireccioneToAttach.getIddireccion());
+                attachedDireccioneCollection.add(direccioneCollectionDireccioneToAttach);
             }
-            via.setDireccionCollection(attachedDireccionCollection);
+            via.setDireccioneCollection(attachedDireccioneCollection);
             em.persist(via);
             if (idmunicipio != null) {
                 idmunicipio.getViaCollection().add(via);
                 idmunicipio = em.merge(idmunicipio);
             }
-            for (Direccion direccionCollectionDireccion : via.getDireccionCollection()) {
-                Via oldIdviaOfDireccionCollectionDireccion = direccionCollectionDireccion.getIdvia();
-                direccionCollectionDireccion.setIdvia(via);
-                direccionCollectionDireccion = em.merge(direccionCollectionDireccion);
-                if (oldIdviaOfDireccionCollectionDireccion != null) {
-                    oldIdviaOfDireccionCollectionDireccion.getDireccionCollection().remove(direccionCollectionDireccion);
-                    oldIdviaOfDireccionCollectionDireccion = em.merge(oldIdviaOfDireccionCollectionDireccion);
+            for (Direccione direccioneCollectionDireccione : via.getDireccioneCollection()) {
+                Via oldIdviaOfDireccioneCollectionDireccione = direccioneCollectionDireccione.getIdvia();
+                direccioneCollectionDireccione.setIdvia(via);
+                direccioneCollectionDireccione = em.merge(direccioneCollectionDireccione);
+                if (oldIdviaOfDireccioneCollectionDireccione != null) {
+                    oldIdviaOfDireccioneCollectionDireccione.getDireccioneCollection().remove(direccioneCollectionDireccione);
+                    oldIdviaOfDireccioneCollectionDireccione = em.merge(oldIdviaOfDireccioneCollectionDireccione);
                 }
             }
             em.getTransaction().commit();
@@ -90,19 +90,19 @@ public class ViaJpaController implements Serializable {
             Via persistentVia = em.find(Via.class, via.getIdvia());
             Municipio idmunicipioOld = persistentVia.getIdmunicipio();
             Municipio idmunicipioNew = via.getIdmunicipio();
-            Collection<Direccion> direccionCollectionOld = persistentVia.getDireccionCollection();
-            Collection<Direccion> direccionCollectionNew = via.getDireccionCollection();
+            Collection<Direccione> direccioneCollectionOld = persistentVia.getDireccioneCollection();
+            Collection<Direccione> direccioneCollectionNew = via.getDireccioneCollection();
             if (idmunicipioNew != null) {
                 idmunicipioNew = em.getReference(idmunicipioNew.getClass(), idmunicipioNew.getIdmunicipio());
                 via.setIdmunicipio(idmunicipioNew);
             }
-            Collection<Direccion> attachedDireccionCollectionNew = new ArrayList<Direccion>();
-            for (Direccion direccionCollectionNewDireccionToAttach : direccionCollectionNew) {
-                direccionCollectionNewDireccionToAttach = em.getReference(direccionCollectionNewDireccionToAttach.getClass(), direccionCollectionNewDireccionToAttach.getIddireccion());
-                attachedDireccionCollectionNew.add(direccionCollectionNewDireccionToAttach);
+            Collection<Direccione> attachedDireccioneCollectionNew = new ArrayList<Direccione>();
+            for (Direccione direccioneCollectionNewDireccioneToAttach : direccioneCollectionNew) {
+                direccioneCollectionNewDireccioneToAttach = em.getReference(direccioneCollectionNewDireccioneToAttach.getClass(), direccioneCollectionNewDireccioneToAttach.getIddireccion());
+                attachedDireccioneCollectionNew.add(direccioneCollectionNewDireccioneToAttach);
             }
-            direccionCollectionNew = attachedDireccionCollectionNew;
-            via.setDireccionCollection(direccionCollectionNew);
+            direccioneCollectionNew = attachedDireccioneCollectionNew;
+            via.setDireccioneCollection(direccioneCollectionNew);
             via = em.merge(via);
             if (idmunicipioOld != null && !idmunicipioOld.equals(idmunicipioNew)) {
                 idmunicipioOld.getViaCollection().remove(via);
@@ -112,20 +112,20 @@ public class ViaJpaController implements Serializable {
                 idmunicipioNew.getViaCollection().add(via);
                 idmunicipioNew = em.merge(idmunicipioNew);
             }
-            for (Direccion direccionCollectionOldDireccion : direccionCollectionOld) {
-                if (!direccionCollectionNew.contains(direccionCollectionOldDireccion)) {
-                    direccionCollectionOldDireccion.setIdvia(null);
-                    direccionCollectionOldDireccion = em.merge(direccionCollectionOldDireccion);
+            for (Direccione direccioneCollectionOldDireccione : direccioneCollectionOld) {
+                if (!direccioneCollectionNew.contains(direccioneCollectionOldDireccione)) {
+                    direccioneCollectionOldDireccione.setIdvia(null);
+                    direccioneCollectionOldDireccione = em.merge(direccioneCollectionOldDireccione);
                 }
             }
-            for (Direccion direccionCollectionNewDireccion : direccionCollectionNew) {
-                if (!direccionCollectionOld.contains(direccionCollectionNewDireccion)) {
-                    Via oldIdviaOfDireccionCollectionNewDireccion = direccionCollectionNewDireccion.getIdvia();
-                    direccionCollectionNewDireccion.setIdvia(via);
-                    direccionCollectionNewDireccion = em.merge(direccionCollectionNewDireccion);
-                    if (oldIdviaOfDireccionCollectionNewDireccion != null && !oldIdviaOfDireccionCollectionNewDireccion.equals(via)) {
-                        oldIdviaOfDireccionCollectionNewDireccion.getDireccionCollection().remove(direccionCollectionNewDireccion);
-                        oldIdviaOfDireccionCollectionNewDireccion = em.merge(oldIdviaOfDireccionCollectionNewDireccion);
+            for (Direccione direccioneCollectionNewDireccione : direccioneCollectionNew) {
+                if (!direccioneCollectionOld.contains(direccioneCollectionNewDireccione)) {
+                    Via oldIdviaOfDireccioneCollectionNewDireccione = direccioneCollectionNewDireccione.getIdvia();
+                    direccioneCollectionNewDireccione.setIdvia(via);
+                    direccioneCollectionNewDireccione = em.merge(direccioneCollectionNewDireccione);
+                    if (oldIdviaOfDireccioneCollectionNewDireccione != null && !oldIdviaOfDireccioneCollectionNewDireccione.equals(via)) {
+                        oldIdviaOfDireccioneCollectionNewDireccione.getDireccioneCollection().remove(direccioneCollectionNewDireccione);
+                        oldIdviaOfDireccioneCollectionNewDireccione = em.merge(oldIdviaOfDireccioneCollectionNewDireccione);
                     }
                 }
             }
@@ -163,10 +163,10 @@ public class ViaJpaController implements Serializable {
                 idmunicipio.getViaCollection().remove(via);
                 idmunicipio = em.merge(idmunicipio);
             }
-            Collection<Direccion> direccionCollection = via.getDireccionCollection();
-            for (Direccion direccionCollectionDireccion : direccionCollection) {
-                direccionCollectionDireccion.setIdvia(null);
-                direccionCollectionDireccion = em.merge(direccionCollectionDireccion);
+            Collection<Direccione> direccioneCollection = via.getDireccioneCollection();
+            for (Direccione direccioneCollectionDireccione : direccioneCollection) {
+                direccioneCollectionDireccione.setIdvia(null);
+                direccioneCollectionDireccione = em.merge(direccioneCollectionDireccione);
             }
             em.remove(via);
             em.getTransaction().commit();

@@ -45,7 +45,7 @@ public class Via implements Serializable {
     @Column(name = "NOMBREVIA")
     private String nombrevia;
     @OneToMany(mappedBy = "idvia")
-    private Collection<Direccion> direccionCollection;
+    private Collection<Direccione> direccioneCollection;
     @JoinColumn(name = "IDMUNICIPIO", referencedColumnName = "IDMUNICIPIO")
     @ManyToOne
     private Municipio idmunicipio;
@@ -88,12 +88,12 @@ public class Via implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Direccion> getDireccionCollection() {
-        return direccionCollection;
+    public Collection<Direccione> getDireccioneCollection() {
+        return direccioneCollection;
     }
 
-    public void setDireccionCollection(Collection<Direccion> direccionCollection) {
-        this.direccionCollection = direccionCollection;
+    public void setDireccioneCollection(Collection<Direccione> direccioneCollection) {
+        this.direccioneCollection = direccioneCollection;
     }
 
     public Municipio getIdmunicipio() {
