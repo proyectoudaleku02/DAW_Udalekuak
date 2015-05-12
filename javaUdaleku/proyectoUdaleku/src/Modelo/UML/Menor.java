@@ -24,7 +24,10 @@ public class Menor extends Solicitante{
     private int idDireccion;
     private String idInscripcion;
 
-    public Menor(String dni, String sexo, Date fechaNac, boolean discapacidad, int idCentro, int idDireccion, String idInscripcion) {
+   
+    private char idModelo;
+
+    public Menor(String dni, String sexo, Date fechaNac, boolean discapacidad, int idCentro, int idDireccion, String idInscripcion, char idModelo) {
         this.dni = dni;
         this.sexo = sexo;
         this.fechaNac = fechaNac;
@@ -32,22 +35,10 @@ public class Menor extends Solicitante{
         this.idCentro = idCentro;
         this.idDireccion = idDireccion;
         this.idInscripcion = idInscripcion;
+        this.idModelo = idModelo;
     }
     
-    
-
-    public Menor(String sexo, Date fechaNac, boolean discapacidad) {
-        this.sexo = sexo;
-        this.fechaNac = fechaNac;
-        this.discapacidad = discapacidad;
-    }
-
-    public Menor(String dni, String sexo, Date fechaNac, boolean discapacidad) {
-        this.dni = dni;
-        this.sexo = sexo;
-        this.fechaNac = fechaNac;
-        this.discapacidad = discapacidad;
-    }
+   
 
     public Menor() {
     }
@@ -107,6 +98,13 @@ public class Menor extends Solicitante{
 
     public void setIdInscripcion(String idInscripcion) {
         this.idInscripcion = idInscripcion;
+    }
+     public char getIdModelo() {
+        return idModelo;
+    }
+
+    public void setIdModelo(char idModelo) {
+        this.idModelo = idModelo;
     }
     
     
