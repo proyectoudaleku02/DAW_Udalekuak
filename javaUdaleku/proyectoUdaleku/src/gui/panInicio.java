@@ -133,17 +133,17 @@ public class panInicio extends javax.swing.JPanel {
 
     private void bArabaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bArabaActionPerformed
         lAraba.setVisible(true);lBizkaia.setVisible(false); lGipuzkoa.setVisible(false);
-        Main.setProvincia("ARB");
+        Main.getProvSelected().setNombreprov("ARB");
     }//GEN-LAST:event_bArabaActionPerformed
 
     private void bBizkaiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBizkaiaActionPerformed
         lBizkaia.setVisible(true);lAraba.setVisible(false); lGipuzkoa.setVisible(false);
-        Main.setProvincia("BZK");
+        Main.getProvSelected().setNombreprov("BZK");
     }//GEN-LAST:event_bBizkaiaActionPerformed
 
     private void bGipuzkoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGipuzkoaActionPerformed
         lGipuzkoa.setVisible(true);lBizkaia.setVisible(false); lAraba.setVisible(false);
-        Main.setProvincia("GZK");
+        Main.getProvSelected().setNombreprov("GZK");
     }//GEN-LAST:event_bGipuzkoaActionPerformed
 
 

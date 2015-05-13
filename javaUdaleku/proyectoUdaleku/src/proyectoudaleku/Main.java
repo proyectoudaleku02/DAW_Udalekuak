@@ -6,6 +6,7 @@ import Modelo.BD.ViaJpaController;
 import Modelo.UML.Centro;
 import Modelo.UML.Localidad;
 import Modelo.UML.Municipio;
+import Modelo.UML.Provincia;
 import Modelo.UML.Via;
 import conexionoracle.ConexionOracle;
 import gui.*;
@@ -16,6 +17,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.persistence.Persistence;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 public class Main {
@@ -34,7 +36,13 @@ public class Main {
     private static ArrayList<Municipio> municipios;
     private static ArrayList<Localidad> localidades;
     private static ArrayList<Centro> centros;
-    private static String provincia;
+    
+    private static Provincia provSelected;
+    private static Municipio munSelected;
+    private static Localidad locSelected;
+    private static Via viaSelected;
+    private static Centro centSelected;
+    
 
     public static void main(String[] args) {
         panInic = new panInicio();
@@ -43,21 +51,91 @@ public class Main {
         panInic.setVisible(true);
         inic.setVisible(true);
         
-        municipios = new ArrayList();
-        localidades= new ArrayList();
-        vias=new ArrayList();
-        centros=new ArrayList();        
-        provincia="ARB";
+        municipios = new ArrayList(); localidades= new ArrayList();
+        vias=new ArrayList(); centros=new ArrayList(); 
+               
+        provSelected=new Provincia();provSelected.setNombreprov("ARB");
+        munSelected=new Municipio(); locSelected=new Localidad();
+        viaSelected=new Via(); centSelected=new Centro();
+
+        llenarPaPruebas();
+    }
+    
+    private static void llenarPaPruebas() {
+        municipios.add(new Municipio());municipios.get(0).setNombremunic("mun1");
+        municipios.add(new Municipio());municipios.get(1).setNombremunic("mun2");
+        municipios.add(new Municipio());municipios.get(2).setNombremunic("mun3");
+        
+        localidades.add(new Localidad());localidades.get(0).setNombreloc("loc1");
+        localidades.add(new Localidad());localidades.get(1).setNombreloc("loc2");
+        localidades.add(new Localidad());localidades.get(2).setNombreloc("loc3");
+        
+        vias.add(new Via());vias.get(0).setNombrevia("via1");
+        vias.add(new Via());vias.get(1).setNombrevia("via2");
+        vias.add(new Via());vias.get(2).setNombrevia("via3");
+        
+        centros.add(new Centro());centros.get(0).setNombrecent("cent1");
+        centros.add(new Centro());centros.get(1).setNombrecent("cent2");
+        centros.add(new Centro());centros.get(2).setNombrecent("cent3");
+    }
+    
+    public static Provincia getProvSelected() {
+        return provSelected;
     }
 
-    public static String getProvincia() {
-        return provincia;
+    public static void setProvSelected(Provincia provSelected) {
+        Main.provSelected = provSelected;
     }
 
-    public static void setProvincia(String provincia) {
-        Main.provincia = provincia;
+    public static Municipio getMunSelected() {
+        return munSelected;
     }
 
+    public static void setMunSelected(Municipio munSelected) {
+        Main.munSelected = munSelected;
+    }
+
+    public static Localidad getLocSelected() {
+        return locSelected;
+    }
+
+    public static void setLocSelected(Localidad locSelected) {
+        Main.locSelected = locSelected;
+    }
+    
+    public static Via getViaSelected() {
+        return viaSelected;
+    }
+
+    public static void setViaSelected(Via viaSelected) {
+        Main.viaSelected = viaSelected;
+    }
+
+    public static Centro getCentSelected() {
+        return centSelected;
+    }
+
+    public static void setCentSelected(Centro centSelected) {
+        Main.centSelected = centSelected;
+    }
+
+    public static ArrayList<Municipio> getMunicipios() {
+        return municipios;
+    }
+
+    public static ArrayList<Localidad> getLocalidades() {
+        return localidades;
+    }
+   
+    public static ArrayList<Via> getVias() {
+        return vias;
+    }    
+
+    public static ArrayList<Centro> getCentros() {
+        return centros;
+    }
+    
+    // Control de paneles.
     public static void verPanInscrip() {
         panInscrip = new panInscripcion();
         inic.getContentPane().setVisible(false);
@@ -70,23 +148,47 @@ public class Main {
         inic.setContentPane(panInic);
         panInic.setVisible(true);
     }
-
-    public static void salir() {
-        System.exit(0);
-    }
-
-    public static void buildLupa(String tipo,String prov) {
+    
+    public static void buildLupa(String tipo,String loc,String mun) {
         switch(tipo){
-            case "municipios":
-                panLupa=new panLupa(tipo, prov);
+            case "calles":
+                panLupa=new panLupa(tipo, loc);
                 panLupa.setVisible(true);
                 break;
             case "centros":
-                
+                panLupa=new panLupa(tipo, mun);
+                panLupa.setVisible(true);                
                 break;
     }
     }
     
+    public static void cancelarLupa() {
+        panLupa.dispose();
+    }
+
+    public static void fillComboMun(JComboBox cbMunicipio) {
+        // Vaciamos lista desplegable de municipios.
+        //cbMunicipio.removeAllItems();
+        // Llenar lista desplegable de municipios.
+        for(int x=0;x<municipios.size();x++)
+        {
+            cbMunicipio.insertItemAt(municipios.get(x).getNombremunic(), x);
+        }
+    }
+
+    public static void fillComboLoc(JComboBox cbLocalidad) {
+        // Vaciamos lista desplegable de municipios.
+        //cbLocalidad.removeAllItems();
+        // Llenar lista desplegable de municipios.
+        for(int x=0;x<localidades.size();x++)
+        {
+            cbLocalidad.insertItemAt(localidades.get(x).getNombreloc(), x);
+        }
+    } 
+    
+    public static void salir() {
+        System.exit(0);
+    }
     public static ArrayList<Municipio> findMunicipios(String idProvincia) {
 
         //MunicipioJpaController munJpa= new MunicipioJpaController(Persistence.createEntityManagerFactory("udalekuPU"));    
@@ -208,4 +310,9 @@ public class Main {
 
         return true;
     }
+
+    public static void sendViaToInscripcion() {
+        panInscrip.rellenarTfCalle();
+    }
+
 }
