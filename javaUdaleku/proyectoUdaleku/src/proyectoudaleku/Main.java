@@ -166,6 +166,12 @@ public class Main {
         cancelarLupa();
         panInscrip.rellenarTfCalle();
     }
+    
+    public static void sendCentroToInscripcion() {
+        cancelarLupa();
+        panInscrip.rellenarTfCentro();
+    }
+        
     public static void cancelarLupa() {
         panLupa.dispose();
     }
@@ -314,4 +320,6 @@ public class Main {
 
         return true;
     }
+
+
 }

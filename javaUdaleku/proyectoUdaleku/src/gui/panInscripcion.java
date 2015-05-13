@@ -693,7 +693,7 @@ public class panInscripcion extends javax.swing.JPanel {
                 .addGap(14, 14, 14))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    // DATOS INICIALES
     private void datosIniciales() {
         // Las lupas quedan desactivadas hasta haber elegido la localidad.
         tfCalle.setEnabled(false); lupaCalle.setEnabled(false);
@@ -732,15 +732,26 @@ public class panInscripcion extends javax.swing.JPanel {
             mostrar("Ha sido imposible registrar la inscripción");
         }
     }//GEN-LAST:event_bGuardarActionPerformed
-
+    
+// LUPAS
     private void lupaCalleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lupaCalleMouseClicked
         Main.buildLupa("calles",cbLocalidad.getSelectedItem().toString(),cbMunicipio.getSelectedItem().toString());
     }//GEN-LAST:event_lupaCalleMouseClicked
+    
+    public void rellenarTfCalle() {
+        tfTipoVia.setText(Main.getViaSelected().getTipovia());
+        tfCalle.setText(Main.getViaSelected().getNombrevia());
+    }
 
     private void lupaCentroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lupaCentroMouseClicked
         Main.buildLupa("centros",cbLocalidad.getSelectedItem().toString(),cbMunicipio.getSelectedItem().toString());
     }//GEN-LAST:event_lupaCentroMouseClicked
-
+    
+    public void rellenarTfCentro() {
+        tfProvinciaCentro.setText(Main.getCentSelected().getNombrecent());
+    }
+    
+    // COMBO BOXES
     private void cbMunicipioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMunicipioActionPerformed
         if(cbMunicipio.getSelectedIndex()!= -1)
         {
@@ -772,60 +783,19 @@ public class panInscripcion extends javax.swing.JPanel {
         borrarFormulario();
     }//GEN-LAST:event_bBorrarActionPerformed
 
-    private void mostrar(String text){
-        JOptionPane.showMessageDialog(null, text);
-    }
-    
-    private void borrarFormulario() {
-        // Borrar datos del padre/madre o tutor/a.
-        tfDniTutor.setText(null);tfNombreTutor.setText(null);tfApel1Tutor.setText(null);tfApel2Tutor.setText(null);
-        // Borrar datos del menor.
-        tfDniMenor.setText(null);tfNombreMenor.setText(null);tfApel1Menor.setText(null);tfApel2Menor.setText(null);grupoSexo.clearSelection();tfFehcaNacMenor.setText(null);cbDiscapacidad.setSelectedIndex(0);
-        // Borrar datos de la dirección.
-        cbLocalidad.removeAllItems();cbMunicipio.removeAllItems();
-        tfCalle.setText(null);tfPiso.setText(null);tfNumero.setText(null);tfLetra.setText(null);tfPiso.setText(null);tfEscalera.setText(null);tfMano.setText(null);
-        tfTfn1.setText(null);tfTfn2.setText(null);tfTfn3.setText(null);tfTfn4.setText(null);
-        // Borrar otros datos.
-        grupoProvincia.clearSelection();tfProvinciaCentro.setText(null);grupoModelo.clearSelection();cbDiscapacidad.setSelectedIndex(0);
-    }
-    
-    private ArrayList makeArrayTfn() {
-        ArrayList<String> telefonos=new ArrayList();
-        telefonos.add(tfTfn1.getText());
-        if(tfTfn2.getText().isEmpty()==false)
-            telefonos.add(tfTfn2.getText());
-        if(tfTfn3.getText().isEmpty()==false)
-            telefonos.add(tfTfn3.getText());
-        if(tfTfn4.getText().isEmpty()==false)
-            telefonos.add(tfTfn4.getText());
-        return telefonos;
-    }
-
-    private void sendDatos() throws Exception{
-        // Datos tutor
-        if(Main.sendTutor(tfDniTutor.getText(),tfNombreTutor.getText(),tfApel1Tutor.getText(),tfApel2Tutor.getText())==false)
-            throw new Exception();
-        // Datos Menor
-        if(Main.sendMenor(tfDniMenor.getText(),tfNombreMenor.getText(),tfApel1Menor.getText(),tfApel2Menor.getText(),grupoSexo.getSelection().toString(),tfFehcaNacMenor.getText(),cbDiscapacidad.getSelectedItem().toString())==false)
-            throw new Exception();
-        // Datos Direccion
-        ArrayList<String> telefonos = makeArrayTfn();
-        if(Main.sendDireccion(cbMunicipio.getSelectedItem().toString(),cbLocalidad.getSelectedItem().toString(),tfCalle.getText(),tfCp.getText(),tfNumero.getText(),tfLetra.getText(),tfPiso.getText(),tfEscalera.getText(),tfMano.getText(),telefonos)==false)
-            throw new Exception();
-        // Datos Centro
-        if(Main.sendCentro(grupoProvincia.getSelection().toString(),tfProvinciaCentro.getText(),grupoModelo.getSelection().toString())==false)
-            throw new Exception();
-            
-    }
-
+    // VERIFICACIONES
     private void verificarDatos() throws Exception {
         // Campos obligatorios del tutor.
         if(tfDniTutor.getText().isEmpty()||tfNombreTutor.getText().isEmpty()||tfApel1Tutor.getText().isEmpty()||tfApel2Tutor.getText().isEmpty())
             throw new CampoVacio();
         // Campos obligatorios del menor.
-        if(tfDniMenor.getText().isEmpty()||tfNombreMenor.getText().isEmpty()||tfApel1Menor.getText().isEmpty()||tfApel2Menor.getText().isEmpty()||grupoSexo.getSelection()==null||tfFehcaNacMenor.getText().isEmpty())
+        if(tfDniMenor.getText().isEmpty()||tfNombreMenor.getText().isEmpty()||tfApel1Menor.getText().isEmpty()||tfApel2Menor.getText().isEmpty()||
+                grupoSexo.getSelection()==null||tfFehcaNacMenor.getText().isEmpty())
             throw new CampoVacio();
         // Campos obligatorios de la dirección.
+        if(cbMunicipio.getSelectedItem()==null||cbLocalidad.getSelectedItem()==null||tfCp.getText().isEmpty()||tfTipoVia.getText().isEmpty()||
+                tfCalle.getText().isEmpty()||tfNumero.getText().isEmpty()||tfLetra.getText().isEmpty()||tfPiso.getText().isEmpty()||
+                tfEscalera.getText().isEmpty()||tfMano.getText().isEmpty()||tfTfn1.getText().isEmpty())
         //if(cbMunicipio.getSelectedIndex()==0||cbLocalidad.getSelectedIndex()==0||tfCp.getText().isEmpty()||tfCalle)
         
         
@@ -878,6 +848,56 @@ public class panInscripcion extends javax.swing.JPanel {
         // Fecha dentro de los valores.
         return true;
     }
+    
+
+    
+    private void borrarFormulario() {
+        // Borrar datos del padre/madre o tutor/a.
+        tfDniTutor.setText(null);tfNombreTutor.setText(null);tfApel1Tutor.setText(null);tfApel2Tutor.setText(null);
+        // Borrar datos del menor.
+        tfDniMenor.setText(null);tfNombreMenor.setText(null);tfApel1Menor.setText(null);tfApel2Menor.setText(null);grupoSexo.clearSelection();tfFehcaNacMenor.setText(null);cbDiscapacidad.setSelectedIndex(0);
+        // Borrar datos de la dirección.
+        cbLocalidad.removeAllItems();cbMunicipio.removeAllItems();
+        tfCalle.setText(null);tfPiso.setText(null);tfNumero.setText(null);tfLetra.setText(null);tfPiso.setText(null);tfEscalera.setText(null);tfMano.setText(null);
+        tfTfn1.setText(null);tfTfn2.setText(null);tfTfn3.setText(null);tfTfn4.setText(null);
+        // Borrar otros datos.
+        grupoProvincia.clearSelection();tfProvinciaCentro.setText(null);grupoModelo.clearSelection();cbDiscapacidad.setSelectedIndex(0);
+    }
+    
+    
+    private void mostrar(String text){
+        JOptionPane.showMessageDialog(null, text);
+    }
+    private ArrayList makeArrayTfn() {
+        ArrayList<String> telefonos=new ArrayList();
+        telefonos.add(tfTfn1.getText());
+        if(tfTfn2.getText().isEmpty()==false)
+            telefonos.add(tfTfn2.getText());
+        if(tfTfn3.getText().isEmpty()==false)
+            telefonos.add(tfTfn3.getText());
+        if(tfTfn4.getText().isEmpty()==false)
+            telefonos.add(tfTfn4.getText());
+        return telefonos;
+    }
+
+    private void sendDatos() throws Exception{
+        // Datos tutor
+        if(Main.sendTutor(tfDniTutor.getText(),tfNombreTutor.getText(),tfApel1Tutor.getText(),tfApel2Tutor.getText())==false)
+            throw new Exception();
+        // Datos Menor
+        if(Main.sendMenor(tfDniMenor.getText(),tfNombreMenor.getText(),tfApel1Menor.getText(),tfApel2Menor.getText(),grupoSexo.getSelection().toString(),tfFehcaNacMenor.getText(),cbDiscapacidad.getSelectedItem().toString())==false)
+            throw new Exception();
+        // Datos Direccion
+        ArrayList<String> telefonos = makeArrayTfn();
+        if(Main.sendDireccion(cbMunicipio.getSelectedItem().toString(),cbLocalidad.getSelectedItem().toString(),tfCalle.getText(),tfCp.getText(),tfNumero.getText(),tfLetra.getText(),tfPiso.getText(),tfEscalera.getText(),tfMano.getText(),telefonos)==false)
+            throw new Exception();
+        // Datos Centro
+        if(Main.sendCentro(grupoProvincia.getSelection().toString(),tfProvinciaCentro.getText(),grupoModelo.getSelection().toString())==false)
+            throw new Exception();
+            
+    }
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bBorrar;
     private javax.swing.JButton bCancelar;
@@ -953,12 +973,5 @@ public class panInscripcion extends javax.swing.JPanel {
     private javax.swing.JFormattedTextField tfTfn4;
     private javax.swing.JTextField tfTipoVia;
     // End of variables declaration//GEN-END:variables
-
-    public void rellenarTfCalle() {
-        tfTipoVia.setText(Main.getViaSelected().getTipovia());
-        tfCalle.setText(Main.getViaSelected().getNombrevia());
-    }
-
-
 
 }
