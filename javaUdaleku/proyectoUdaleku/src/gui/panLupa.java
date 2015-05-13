@@ -153,8 +153,7 @@ public class panLupa extends javax.swing.JFrame {
                 break;
             case "CENTROS":
                 // El ArrayList de centros del Main es coincidente con esta lista. Así sabemos qué municipio seleccionamos.
-                Main.setCentSelected(Main.getCentros().get(list.getSelectedIndex()));
-                System.out.println(Main.getCentSelected().getNombrecent());
+                Main.setCentSelected(Main.getCentros().get(list.getSelectedIndex()));               
                 break;
         }
     }//GEN-LAST:event_bAceptarActionPerformed

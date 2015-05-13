@@ -70,9 +70,9 @@ public class Main {
         localidades.add(new Localidad());localidades.get(1).setNombreloc("loc2");
         localidades.add(new Localidad());localidades.get(2).setNombreloc("loc3");
         
-        vias.add(new Via());vias.get(0).setNombrevia("via1");
-        vias.add(new Via());vias.get(1).setNombrevia("via2");
-        vias.add(new Via());vias.get(2).setNombrevia("via3");
+        vias.add(new Via());vias.get(0).setNombrevia("via1");vias.get(0).setTipovia("calle");
+        vias.add(new Via());vias.get(1).setNombrevia("via2");vias.get(1).setTipovia("calle");
+        vias.add(new Via());vias.get(2).setNombrevia("via3");vias.get(2).setTipovia("calle");
         
         centros.add(new Centro());centros.get(0).setNombrecent("cent1");
         centros.add(new Centro());centros.get(1).setNombrecent("cent2");
@@ -162,6 +162,10 @@ public class Main {
     }
     }
     
+    public static void sendViaToInscripcion() {
+        cancelarLupa();
+        panInscrip.rellenarTfCalle();
+    }
     public static void cancelarLupa() {
         panLupa.dispose();
     }
@@ -310,9 +314,4 @@ public class Main {
 
         return true;
     }
-
-    public static void sendViaToInscripcion() {
-        panInscrip.rellenarTfCalle();
-    }
-
 }
