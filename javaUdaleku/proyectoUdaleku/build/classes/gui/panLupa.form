@@ -23,6 +23,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="263" max="-2" attributes="0"/>
               <Component id="lTitulo" min="-2" max="-2" attributes="0"/>
@@ -30,11 +31,35 @@
               <Component id="lProv" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
+=======
+>>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="53" max="32767" attributes="0"/>
               <Component id="jScrollPane2" min="-2" pref="718" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
           </Group>
+<<<<<<< HEAD
+=======
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="263" max="-2" attributes="0"/>
+                      <Component id="lTitulo" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lDe" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                      <Component id="lProv" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="224" max="-2" attributes="0"/>
+                      <Component id="bAceptar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="224" max="-2" attributes="0"/>
+                      <Component id="bCancelar" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace pref="233" max="32767" attributes="0"/>
+          </Group>
+>>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -44,10 +69,23 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lTitulo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lProv" alignment="3" min="-2" max="-2" attributes="0"/>
+<<<<<<< HEAD
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane2" pref="276" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+=======
+                  <Component id="lDe" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jScrollPane2" min="-2" pref="315" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="bAceptar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+>>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
           </Group>
       </Group>
     </DimensionLayout>
@@ -60,7 +98,11 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
+<<<<<<< HEAD
         <Component class="javax.swing.JList" name="jList1">
+=======
+        <Component class="javax.swing.JList" name="list">
+>>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
           <Properties>
             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
               <StringArray count="0"/>
@@ -74,7 +116,11 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Lucida Grande" size="24" style="1"/>
         </Property>
+<<<<<<< HEAD
         <Property name="text" type="java.lang.String" value="MUNICIPIOS DE"/>
+=======
+        <Property name="text" type="java.lang.String" value="CALLES"/>
+>>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lProv">
@@ -85,5 +131,32 @@
         <Property name="text" type="java.lang.String" value="ARABA"/>
       </Properties>
     </Component>
+<<<<<<< HEAD
+=======
+    <Component class="javax.swing.JButton" name="bAceptar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Aceptar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bAceptarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bCancelar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancelar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bCancelarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lDe">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="24" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="DE"/>
+      </Properties>
+    </Component>
+>>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
   </SubComponents>
 </Form>

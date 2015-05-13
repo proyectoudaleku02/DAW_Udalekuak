@@ -7,6 +7,10 @@ package gui;
 
 import Excepciones.CampoVacio;
 import Excepciones.ExGenerica;
+<<<<<<< HEAD
+=======
+import Modelo.UML.Via;
+>>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -93,6 +97,11 @@ public class panInscripcion extends javax.swing.JPanel {
         tfTfn4 = new javax.swing.JFormattedTextField();
         jLabel28 = new javax.swing.JLabel();
         lupaCalle = new javax.swing.JLabel();
+<<<<<<< HEAD
+=======
+        jLabel2 = new javax.swing.JLabel();
+        tfTipoVia = new javax.swing.JTextField();
+>>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
         jLabel27 = new javax.swing.JLabel();
         pOtrosDatos = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
@@ -297,13 +306,25 @@ public class panInscripcion extends javax.swing.JPanel {
 
         jLabel18.setText("*Código Postal");
 
+        cbMunicipio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbMunicipioActionPerformed(evt);
+            }
+        });
+
+        cbLocalidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbLocalidadActionPerformed(evt);
+            }
+        });
+
         try {
             tfCp.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
 
-        jLabel19.setText("* Calle");
+        jLabel19.setText("* Nombre");
 
         jLabel20.setText("Número");
 
@@ -375,6 +396,11 @@ public class panInscripcion extends javax.swing.JPanel {
             }
         });
 
+<<<<<<< HEAD
+=======
+        jLabel2.setText("* Tipo de via");
+
+>>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
         javax.swing.GroupLayout pDireccionLayout = new javax.swing.GroupLayout(pDireccion);
         pDireccion.setLayout(pDireccionLayout);
         pDireccionLayout.setHorizontalGroup(
@@ -427,9 +453,17 @@ public class panInscripcion extends javax.swing.JPanel {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(tfCp, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pDireccionLayout.createSequentialGroup()
-                                    .addComponent(jLabel19)
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(tfTipoVia, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+<<<<<<< HEAD
                                     .addComponent(tfCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE)
+=======
+                                    .addComponent(jLabel19)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(tfCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+>>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(lupaCalle)))
                             .addGroup(pDireccionLayout.createSequentialGroup()
@@ -445,10 +479,10 @@ public class panInscripcion extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(tfTfn2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pDireccionLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pDireccionLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
                 .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         pDireccionLayout.setVerticalGroup(
             pDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -468,12 +502,18 @@ public class panInscripcion extends javax.swing.JPanel {
                     .addComponent(lupaCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel19)
+<<<<<<< HEAD
                         .addComponent(tfCalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+=======
+                        .addComponent(tfCalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)
+                        .addComponent(tfTipoVia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+>>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
                 .addGroup(pDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pDireccionLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                         .addComponent(jLabel23)
-                        .addGap(67, 67, 67))
+                        .addGap(41, 41, 41))
                     .addGroup(pDireccionLayout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(pDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -495,10 +535,9 @@ public class panInscripcion extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tfTfn3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfTfn4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                            .addComponent(tfTfn4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10))
         );
 
         pOtrosDatos.setBorder(javax.swing.BorderFactory.createTitledBorder("OTROS DATOS"));
@@ -527,6 +566,14 @@ public class panInscripcion extends javax.swing.JPanel {
         cbDiscapacidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No", "Si" }));
 
         lupaCentro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa.png"))); // NOI18N
+<<<<<<< HEAD
+=======
+        lupaCentro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lupaCentroMouseClicked(evt);
+            }
+        });
+>>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
 
         javax.swing.GroupLayout pOtrosDatosLayout = new javax.swing.GroupLayout(pOtrosDatos);
         pOtrosDatos.setLayout(pOtrosDatosLayout);
@@ -587,6 +634,11 @@ public class panInscripcion extends javax.swing.JPanel {
         );
 
         bBorrar.setText("Borrar");
+        bBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBorrarActionPerformed(evt);
+            }
+        });
 
         bGuardar.setText("Guardar");
         bGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -634,7 +686,11 @@ public class panInscripcion extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(154, 154, 154)
                         .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE)))
+<<<<<<< HEAD
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+=======
+                .addContainerGap(136, Short.MAX_VALUE))
+>>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -663,8 +719,16 @@ public class panInscripcion extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void datosIniciales() {
+<<<<<<< HEAD
         // Provincia
         String prov=Main.getProvincia();
+=======
+        // Las lupas quedan desactivadas hasta haber elegido la localidad.
+        tfCalle.setEnabled(false); lupaCalle.setEnabled(false);
+        tfProvinciaCentro.setEnabled(false); lupaCentro.setEnabled(false);
+        // Provincia
+        String prov=Main.getProvSelected().getNombreprov();
+>>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
         switch (prov){
             case "ARB":
                 rbProv.setText("Araba");
@@ -676,6 +740,12 @@ public class panInscripcion extends javax.swing.JPanel {
                 rbProv.setText("Gipuzkoa");
                 break;
         }
+<<<<<<< HEAD
+=======
+        // Municipios
+        //Main.findMunicipios(prov);
+        Main.fillComboMun(cbMunicipio);
+>>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
     }
     
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
@@ -696,13 +766,70 @@ public class panInscripcion extends javax.swing.JPanel {
     }//GEN-LAST:event_bGuardarActionPerformed
 
     private void lupaCalleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lupaCalleMouseClicked
+<<<<<<< HEAD
         Main.buildLupa("municipios",rbProv.getText());
     }//GEN-LAST:event_lupaCalleMouseClicked
 
+=======
+        Main.buildLupa("calles",cbLocalidad.getSelectedItem().toString(),cbMunicipio.getSelectedItem().toString());
+    }//GEN-LAST:event_lupaCalleMouseClicked
+
+    private void lupaCentroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lupaCentroMouseClicked
+        Main.buildLupa("centros",cbLocalidad.getSelectedItem().toString(),cbMunicipio.getSelectedItem().toString());
+    }//GEN-LAST:event_lupaCentroMouseClicked
+
+    private void cbMunicipioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMunicipioActionPerformed
+        if(cbMunicipio.getSelectedIndex()!= -1)
+        {
+        ////Main.findLocalidades(String.valueOf(Main.getMunSelected().getIdmunicipio()));
+        
+        Main.fillComboLoc(cbLocalidad);
+        // Tanto la combo box de los municipios como el array de municipios es coincidente.
+        // Hacemos set del municipio seleccionado en el Main.
+        Main.setMunSelected(Main.getMunicipios().get(cbMunicipio.getSelectedIndex()));
+        }
+    }//GEN-LAST:event_cbMunicipioActionPerformed
+
+    private void cbLocalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbLocalidadActionPerformed
+        if(cbLocalidad.getSelectedIndex()!= -1)
+        {
+            ////Main.findCentros(String.valueOf(Main.getLocSelected().getIdlocalidad()));
+        
+            // Activamos las lupas.
+            tfCalle.setEnabled(true); lupaCalle.setEnabled(true);
+            tfProvinciaCentro.setEnabled(true); lupaCentro.setEnabled(true);
+            // Tanto la combo box de los municipios como el array de municipios es coincidente.
+            // Hacemos set del municipio seleccionado en el Main.
+            Main.setLocSelected(Main.getLocalidades().get(cbLocalidad.getSelectedIndex()));
+        }
+        
+    }//GEN-LAST:event_cbLocalidadActionPerformed
+
+    private void bBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBorrarActionPerformed
+        borrarFormulario();
+    }//GEN-LAST:event_bBorrarActionPerformed
+
+>>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
     private void mostrar(String text){
         JOptionPane.showMessageDialog(null, text);
     }
     
+<<<<<<< HEAD
+=======
+    private void borrarFormulario() {
+        // Borrar datos del padre/madre o tutor/a.
+        tfDniTutor.setText(null);tfNombreTutor.setText(null);tfApel1Tutor.setText(null);tfApel2Tutor.setText(null);
+        // Borrar datos del menor.
+        tfDniMenor.setText(null);tfNombreMenor.setText(null);tfApel1Menor.setText(null);tfApel2Menor.setText(null);grupoSexo.clearSelection();tfFehcaNacMenor.setText(null);cbDiscapacidad.setSelectedIndex(0);
+        // Borrar datos de la dirección.
+        cbLocalidad.removeAllItems();cbMunicipio.removeAllItems();
+        tfCalle.setText(null);tfPiso.setText(null);tfNumero.setText(null);tfLetra.setText(null);tfPiso.setText(null);tfEscalera.setText(null);tfMano.setText(null);
+        tfTfn1.setText(null);tfTfn2.setText(null);tfTfn3.setText(null);tfTfn4.setText(null);
+        // Borrar otros datos.
+        grupoProvincia.clearSelection();tfProvinciaCentro.setText(null);grupoModelo.clearSelection();cbDiscapacidad.setSelectedIndex(0);
+    }
+    
+>>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
     private ArrayList makeArrayTfn() {
         ArrayList<String> telefonos=new ArrayList();
         telefonos.add(tfTfn1.getText());
@@ -812,6 +939,7 @@ public class panInscripcion extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -864,6 +992,17 @@ public class panInscripcion extends javax.swing.JPanel {
     private javax.swing.JFormattedTextField tfTfn2;
     private javax.swing.JFormattedTextField tfTfn3;
     private javax.swing.JFormattedTextField tfTfn4;
+    private javax.swing.JTextField tfTipoVia;
     // End of variables declaration//GEN-END:variables
 
+<<<<<<< HEAD
+=======
+    public void rellenarTfCalle() {
+        tfTipoVia.setText(Main.getViaSelected().getTipovia());
+        tfCalle.setText(Main.getViaSelected().getNombrevia());
+    }
+
+
+
+>>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
 }

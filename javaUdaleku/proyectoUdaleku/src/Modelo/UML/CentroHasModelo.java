@@ -39,7 +39,10 @@ public class CentroHasModelo implements Serializable {
     public CentroHasModelo(long idcentro, String idmodelo) {
         this.centroHasModeloPK = new CentroHasModeloPK(idcentro, idmodelo);
     }
+<<<<<<< HEAD
    
+=======
+>>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
 
     public CentroHasModeloPK getCentroHasModeloPK() {
         return centroHasModeloPK;

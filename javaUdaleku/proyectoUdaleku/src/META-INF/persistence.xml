@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="udalekuPU" transaction-type="RESOURCE_LOCAL">
@@ -26,3 +27,30 @@
     </properties>
   </persistence-unit>
 </persistence>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="udalekuPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>Modelo.UML.Municipios</class>
+    <class>Modelo.UML.Centros</class>
+    <class>Modelo.UML.Provincias</class>
+    <class>Modelo.UML.Direcciones</class>
+    <class>Modelo.UML.Vias</class>
+    <class>Modelo.UML.Localidades</class>
+    <class>Modelo.UML.Provincia</class>
+    <class>Modelo.UML.Direccion</class>
+    <class>Modelo.UML.Localidad</class>
+    <class>Modelo.UML.Via</class>
+    <class>Modelo.UML.Municipio</class>
+    <class>Modelo.UML.Centro</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@server224:1521:orcl"/>
+      <property name="javax.persistence.jdbc.user" value="daw02"/>
+      <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
+      <property name="javax.persistence.jdbc.password" value="daw02"/>
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+    </properties>
+  </persistence-unit>
+</persistence>
+>>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc

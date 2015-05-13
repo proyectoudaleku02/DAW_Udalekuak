@@ -68,7 +68,11 @@
                       <Component id="jLabel27" min="-2" pref="685" max="-2" attributes="0"/>
                   </Group>
               </Group>
+<<<<<<< HEAD
               <EmptySpace max="32767" attributes="0"/>
+=======
+              <EmptySpace pref="136" max="32767" attributes="0"/>
+>>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
           </Group>
       </Group>
     </DimensionLayout>
@@ -417,7 +421,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="tfNumero" min="-2" pref="49" max="-2" attributes="0"/>
@@ -470,9 +474,17 @@
                                       <Component id="tfCp" min="-2" pref="99" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="tfTipoVia" min="-2" pref="87" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
+<<<<<<< HEAD
                                       <Component id="tfCalle" min="-2" pref="521" max="-2" attributes="0"/>
+=======
+                                      <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="tfCalle" min="-2" pref="311" max="-2" attributes="0"/>
+>>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="lupaCalle" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -498,10 +510,10 @@
                       </Group>
                   </Group>
               </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Component id="jLabel28" min="-2" pref="525" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -526,13 +538,18 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="tfCalle" alignment="3" min="-2" max="-2" attributes="0"/>
+<<<<<<< HEAD
+=======
+                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfTipoVia" alignment="3" min="-2" max="-2" attributes="0"/>
+>>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="85" max="32767" attributes="0"/>
                           <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
@@ -559,11 +576,10 @@
                               <Component id="tfTfn3" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="tfTfn4" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="10" max="32767" attributes="0"/>
-                          <Component id="jLabel28" min="-2" pref="16" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <Component id="jLabel28" min="-2" pref="16" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -590,6 +606,9 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbMunicipioActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="cbLocalidad">
           <Properties>
@@ -597,6 +616,9 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbLocalidadActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="tfCp">
           <Properties>
@@ -607,7 +629,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel19">
           <Properties>
-            <Property name="text" type="java.lang.String" value="* Calle"/>
+            <Property name="text" type="java.lang.String" value="* Nombre"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="tfCalle">
@@ -720,6 +742,16 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lupaCalleMouseClicked"/>
           </Events>
         </Component>
+<<<<<<< HEAD
+=======
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="* Tipo de via"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tfTipoVia">
+        </Component>
+>>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
       </SubComponents>
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel27">
@@ -879,6 +911,12 @@
               <Image iconType="3" name="/imagenes/lupa.png"/>
             </Property>
           </Properties>
+<<<<<<< HEAD
+=======
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lupaCentroMouseClicked"/>
+          </Events>
+>>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
         </Component>
       </SubComponents>
     </Container>
@@ -886,6 +924,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Borrar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bBorrarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bGuardar">
       <Properties>
