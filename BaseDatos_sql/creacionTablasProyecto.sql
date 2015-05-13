@@ -1,3 +1,11 @@
+/*
+	Autor: Grupo Sergio, Álvaro y Noemi
+
+	Descripcion: Creación de la Base de Datos del proyecto udalekuak.
+	Creación, refresco e insercción de datos en las tablas correspondientes al modelo relacional, consecuencia del MER.
+
+*/
+
 DROP TABLE MENORES CASCADE CONSTRAINTS; 
 DROP TABLE TELEFONOS CASCADE CONSTRAINTS;
 DROP TABLE TUTORES CASCADE CONSTRAINTS;
