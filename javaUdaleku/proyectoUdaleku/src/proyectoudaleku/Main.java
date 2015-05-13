@@ -1,3 +1,4 @@
+
 package proyectoudaleku;
 
 import Modelo.BD.LocalidadJpaController;
