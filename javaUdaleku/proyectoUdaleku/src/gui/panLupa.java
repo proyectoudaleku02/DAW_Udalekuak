@@ -5,8 +5,7 @@
  */
 package gui;
 
-<<<<<<< HEAD
-=======
+
 import Modelo.UML.Centro;
 import Modelo.UML.Localidad;
 import Modelo.UML.Via;
@@ -14,16 +13,15 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import proyectoudaleku.Main;
 
->>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
+
 /**
  *
  * @author 1gprog07
  */
 public class panLupa extends javax.swing.JFrame {
-<<<<<<< HEAD
-=======
+
     private ArrayList<Localidad> localidades;
->>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
+
 
     /**
      * Creates new form panelLupa
@@ -33,12 +31,11 @@ public class panLupa extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
 
-<<<<<<< HEAD
     public panLupa(String tipo, String prov) {
         initComponents();
         setLocationRelativeTo(null);
         lTitulo.setText("MUNICIPIOS DE"); lProv.setText(prov.toUpperCase());
-=======
+
     public panLupa(String tipo, String loc) {
         initComponents();
         setLocationRelativeTo(null);
@@ -62,7 +59,7 @@ public class panLupa extends javax.swing.JFrame {
                 list.setModel(modeloCentros);
                 break;
         }
->>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
+
     }
 
     /**
@@ -188,8 +185,7 @@ public class panLupa extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-<<<<<<< HEAD
-=======
+
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
         Main.cancelarLupa();
     }//GEN-LAST:event_bCancelarActionPerformed
@@ -209,7 +205,7 @@ public class panLupa extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bAceptarActionPerformed
 
->>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
+
     /**
      * @param args the command line arguments
      */

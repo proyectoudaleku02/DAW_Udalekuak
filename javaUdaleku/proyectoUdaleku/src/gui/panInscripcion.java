@@ -7,10 +7,10 @@ package gui;
 
 import Excepciones.CampoVacio;
 import Excepciones.ExGenerica;
-<<<<<<< HEAD
-=======
+
+
 import Modelo.UML.Via;
->>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -718,17 +718,16 @@ public class panInscripcion extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void datosIniciales() {
-<<<<<<< HEAD
+
         // Provincia
         String prov=Main.getProvincia();
-=======
+
         // Las lupas quedan desactivadas hasta haber elegido la localidad.
         tfCalle.setEnabled(false); lupaCalle.setEnabled(false);
         tfProvinciaCentro.setEnabled(false); lupaCentro.setEnabled(false);
         // Provincia
         String prov=Main.getProvSelected().getNombreprov();
->>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
+
         switch (prov){
             case "ARB":
                 rbProv.setText("Araba");
@@ -740,12 +739,11 @@ public class panInscripcion extends javax.swing.JPanel {
                 rbProv.setText("Gipuzkoa");
                 break;
         }
-<<<<<<< HEAD
-=======
+
         // Municipios
         //Main.findMunicipios(prov);
         Main.fillComboMun(cbMunicipio);
->>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
+
     }
     
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
@@ -766,11 +764,11 @@ public class panInscripcion extends javax.swing.JPanel {
     }//GEN-LAST:event_bGuardarActionPerformed
 
     private void lupaCalleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lupaCalleMouseClicked
-<<<<<<< HEAD
-        Main.buildLupa("municipios",rbProv.getText());
-    }//GEN-LAST:event_lupaCalleMouseClicked
 
-=======
+        Main.buildLupa("municipios",rbProv.getText());
+    }                                      
+
+
         Main.buildLupa("calles",cbLocalidad.getSelectedItem().toString(),cbMunicipio.getSelectedItem().toString());
     }//GEN-LAST:event_lupaCalleMouseClicked
 
@@ -809,13 +807,12 @@ public class panInscripcion extends javax.swing.JPanel {
         borrarFormulario();
     }//GEN-LAST:event_bBorrarActionPerformed
 
->>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
+
     private void mostrar(String text){
         JOptionPane.showMessageDialog(null, text);
     }
     
-<<<<<<< HEAD
-=======
+
     private void borrarFormulario() {
         // Borrar datos del padre/madre o tutor/a.
         tfDniTutor.setText(null);tfNombreTutor.setText(null);tfApel1Tutor.setText(null);tfApel2Tutor.setText(null);
@@ -829,7 +826,7 @@ public class panInscripcion extends javax.swing.JPanel {
         grupoProvincia.clearSelection();tfProvinciaCentro.setText(null);grupoModelo.clearSelection();cbDiscapacidad.setSelectedIndex(0);
     }
     
->>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
+
     private ArrayList makeArrayTfn() {
         ArrayList<String> telefonos=new ArrayList();
         telefonos.add(tfTfn1.getText());
@@ -995,14 +992,11 @@ public class panInscripcion extends javax.swing.JPanel {
     private javax.swing.JTextField tfTipoVia;
     // End of variables declaration//GEN-END:variables
 
-<<<<<<< HEAD
-=======
+
     public void rellenarTfCalle() {
         tfTipoVia.setText(Main.getViaSelected().getTipovia());
         tfCalle.setText(Main.getViaSelected().getNombrevia());
     }
 
 
-
->>>>>>> c9946228d182cd16818acfb1503e9d13b7b1acfc
 }
