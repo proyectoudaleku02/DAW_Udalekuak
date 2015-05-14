@@ -36,8 +36,7 @@ public class Main {
     private static ArrayList<Municipio> municipios;
     private static ArrayList<Localidad> localidades;
     private static ArrayList<Centro> centros;
-
-     private static ArrayList<CentroHasModelo> centroHasModelo;
+    private static ArrayList<CentroHasModelo> centroHasModelo;
 
     private static String provincia;
 
